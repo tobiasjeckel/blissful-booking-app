@@ -12,12 +12,7 @@ export default class Welcome extends React.Component {
         return (
             <HashRouter>
                 <div>
-                    <h1>Welcome to Myspace!</h1>
-                    <h3>
-                        Join us in bringing back the best social network in the
-                        history of social networks!
-                    </h3>
-                    <img src="assets/Myspace-splash.gif" />
+                    <h1>Welcome to Blissfull Booking Tool!</h1>
                     <div>
                         <Route exact path="/" component={Registration} />
                         <Route path="/login" component={Login} />

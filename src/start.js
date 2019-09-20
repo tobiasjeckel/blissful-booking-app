@@ -14,5 +14,3 @@ if (location.pathname == "/welcome") {
 }
 
 ReactDOM.render(elem, document.querySelector("main"));
-
-//elem = <img src="assets/under-construction.gif" />;

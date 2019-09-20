@@ -2,7 +2,7 @@ const spicedPg = require("spiced-pg");
 
 const db = spicedPg(
     process.env.DATABASE_URL ||
-        "postgres:postgres:postgres@localhost:5432/socialnetwork"
+        "postgres:postgres:postgres@localhost:5432/booking"
 );
 
 exports.testFunction = function() {
@@ -23,39 +23,6 @@ exports.getHash = function(email) {
     return db.query(`SELECT password, id, first FROM users WHERE email = $1`, [
         email
     ]);
-};
-
-exports.addProfile = function(age, city, url, user_id) {
-    return db.query(
-        `INSERT INTO user_profiles (age, city, url, user_id)
-        VALUES ($1, $2, $3, $4)
-        RETURNING user_id
-        `,
-        [age || null, city || null, url || null, user_id]
-    );
-};
-
-exports.getUser = function(id) {
-    return db.query(
-        `SELECT first, last, email, age, city, url
-        FROM users
-        LEFT OUTER JOIN user_profiles
-        ON users.id = user_profiles.user_id
-        WHERE users.id = $1
-        `,
-        [id]
-    );
-};
-
-exports.editProfile = function(age, city, url, id) {
-    return db.query(
-        `INSERT INTO user_profiles (age, city, url, user_id)
-        VALUES ($1, $2, $3, $4)
-        ON CONFLICT (user_id)
-        DO UPDATE SET age = $1, city = $2, url = $3
-        `,
-        [age || null, city || null, url || null, id]
-    );
 };
 
 exports.editUser = function(first, last, email, id) {
@@ -79,5 +46,21 @@ exports.editUserAndPass = function(first, last, email, id, hash) {
         RETURNING first
         `,
         [first, last, email, id, hash]
+    );
+};
+
+exports.checkCapacity = function(week) {
+    return db.query(
+        `
+        SELECT stands.id, type
+        FROM stands
+        WHERE NOT EXISTS
+            (
+                SELECT stand_id
+                FROM bookings
+                WHERE week = $1 AND bookings.stand_id = stands.id
+            )
+        `,
+        [week]
     );
 };
