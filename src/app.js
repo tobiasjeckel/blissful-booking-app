@@ -1,16 +1,27 @@
 import React, { useEffect } from "react";
-import axios from "./axios";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {} from "./actions";
+import Bookings from "./bookings";
+import CreateBooking from "./createbooking";
+import Confirmation from "./confirmation";
+import Admin from "./adminpanel";
+import MyBookings from "./mybookings";
 
 export default function App() {
-    console.log("app has mounted");
+    const dispatch = useDispatch();
+
     return (
         <BrowserRouter>
-            <div>
-                <h1>Hello Booking Tool</h1>
-            </div>
+            <React.Fragment>
+                <div className="header">
+                    <h1>Hello Booking Tool. This is the header</h1>
+                </div>
+                <Route exact path="/" component={Bookings} />
+                <Route path="/createbooking" component={CreateBooking} />
+                <Route path="/confirmation" component={Confirmation} />
+                <Route path="/adminpanel" component={Admin} />
+                <Route path="/mybookings" component={MyBookings} />
+            </React.Fragment>
         </BrowserRouter>
     );
 }

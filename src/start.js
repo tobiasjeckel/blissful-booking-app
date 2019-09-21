@@ -23,7 +23,6 @@ if (location.pathname == "/welcome") {
     elem = <Welcome />;
 } else {
     //user is logged in
-    console.log("app should mount");
     elem = (
         <Provider store={store}>
             <App />

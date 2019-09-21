@@ -5,6 +5,7 @@ const bc = require("./utils/bc");
 const db = require("./utils/db");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
+const moment = require("moment");
 
 //middleware
 app.use(compression());
@@ -41,7 +42,6 @@ if (process.env.NODE_ENV != "production") {
 }
 
 app.post("/registration", (req, res) => {
-    console.log("this is the body of reg", req.body);
     bc.hash(req.body.password)
         .then(hash => {
             db.addUser(req.body.first, req.body.last, req.body.email, hash)
@@ -112,7 +112,6 @@ app.get("/welcome", (req, res) => {
 
 app.get("*", (req, res) => {
     if (req.session.id) {
-        console.log("should be in ap");
         res.sendFile(__dirname + "/index.html");
     } else {
         res.redirect("/welcome");
