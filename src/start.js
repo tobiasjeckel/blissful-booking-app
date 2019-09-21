@@ -1,7 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Welcome from "./welcome";
-import Logo from "./logo";
+import App from "./app.js";
+
+//redux stuff
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import reduxPromise from "redux-promise";
+import { composeWithDevTools } from "redux-devtools-extension";
+import reducer from "./reducer";
+// import { init } from "./socket";
+
+const store = createStore(
+    reducer,
+    composeWithDevTools(applyMiddleware(reduxPromise))
+);
 
 let elem;
 
@@ -10,7 +23,12 @@ if (location.pathname == "/welcome") {
     elem = <Welcome />;
 } else {
     //user is logged in
-    elem = <Logo />;
+    console.log("app should mount");
+    elem = (
+        <Provider store={store}>
+            <App />
+        </Provider>
+    );
 }
 
 ReactDOM.render(elem, document.querySelector("main"));

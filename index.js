@@ -27,11 +27,6 @@ app.use(function(req, res, next) {
     next();
 });
 
-// app.use(
-//     express.urlencoded({
-//         extended: false
-//     })
-// );
 app.use(express.static("./public")); //for css
 
 if (process.env.NODE_ENV != "production") {
@@ -105,6 +100,11 @@ app.post("/login", (req, res) => {
         });
 });
 
+app.get("/logout", function(req, res) {
+    req.session = null;
+    res.redirect("/welcome");
+});
+
 app.get("/welcome", (req, res) => {
     // res.render();
     res.sendFile(__dirname + "/index.html");
@@ -112,6 +112,7 @@ app.get("/welcome", (req, res) => {
 
 app.get("*", (req, res) => {
     if (req.session.id) {
+        console.log("should be in ap");
         res.sendFile(__dirname + "/index.html");
     } else {
         res.redirect("/welcome");
