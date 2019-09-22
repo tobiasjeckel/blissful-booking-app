@@ -49,7 +49,7 @@ exports.editUserAndPass = function(first, last, email, id, hash) {
     );
 };
 
-exports.checkCapacity = function(week) {
+exports.getFreeStands = function(iso_week, iso_year) {
     return db.query(
         `
         SELECT stands.id, type
@@ -58,9 +58,9 @@ exports.checkCapacity = function(week) {
             (
                 SELECT stand_id
                 FROM bookings
-                WHERE week = $1 AND bookings.stand_id = stands.id
+                WHERE iso_week = $1 AND iso_year = $2 AND bookings.stand_id = stands.id
             )
         `,
-        [week]
+        [iso_week, iso_year]
     );
 };

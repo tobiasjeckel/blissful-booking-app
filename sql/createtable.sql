@@ -10,8 +10,6 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-DROP TABLE IF EXISTS user_profiles;
-
 
 DROP TABLE IF EXISTS stands;
 
@@ -25,7 +23,8 @@ DROP TABLE IF EXISTS bookings;
 
 CREATE TABLE bookings(
     id SERIAL PRIMARY KEY,
-    week INTEGER,
+    iso_week INTEGER,
+    iso_year INTEGER,
     user_id INTEGER,
     stand_id INTEGER
 )

@@ -1,8 +1,9 @@
 export default function reducer(state = {}, action) {
-    if (action.type === "ACTION_THAT_WILL_CHANGE_A_THING") {
+    if (action.type === "GET_CURRENT_WEEK") {
+        // console.log(action.nextFourWeeks);
         state = {
-            ...state
-            // friendsWannabes: action.friendsWannabes
+            ...state,
+            currentWeek: action.currentWeek
         };
     }
     return state;

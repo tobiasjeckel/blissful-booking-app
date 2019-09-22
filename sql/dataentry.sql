@@ -6,8 +6,59 @@ INSERT INTO bookings (week, user_id, stand_id)
 VALUES (6, 12, 12);
 INSERT INTO bookings (week, user_id, stand_id)
 VALUES (6, 13, 13);
-INSERT INTO bookings (week, user_id, stand_id)
-VALUES (6, 14, 14);
+
+
+INSERT INTO bookings (iso_week, iso_year, user_id, stand_id)
+VALUES (38, 2019, 1, 1);
+INSERT INTO bookings (iso_week, iso_year, user_id, stand_id)
+VALUES (38, 2019, 2, 2);
+INSERT INTO bookings (iso_week, iso_year, user_id, stand_id)
+VALUES (38, 2019, 3, 3);
+INSERT INTO bookings (iso_week, iso_year, user_id, stand_id)
+VALUES (38, 2019, 4, 4);
+
+
+INSERT INTO stands (type)
+VALUES ('small');
+INSERT INTO stands (type)
+VALUES ('small');
+INSERT INTO stands (type)
+VALUES ('small');
+INSERT INTO stands (type)
+VALUES ('small');
+INSERT INTO stands (type)
+VALUES ('small');
+INSERT INTO stands (type)
+VALUES ('small');
+INSERT INTO stands (type)
+VALUES ('small');
+INSERT INTO stands (type)
+VALUES ('small');
+INSERT INTO stands (type)
+VALUES ('small');
+INSERT INTO stands (type)
+VALUES ('small');
+INSERT INTO stands (type)
+VALUES ('large');
+INSERT INTO stands (type)
+VALUES ('large');
+INSERT INTO stands (type)
+VALUES ('large');
+INSERT INTO stands (type)
+VALUES ('large');
+INSERT INTO stands (type)
+VALUES ('large');
+INSERT INTO stands (type)
+VALUES ('large');
+INSERT INTO stands (type)
+VALUES ('large');
+INSERT INTO stands (type)
+VALUES ('large');
+INSERT INTO stands (type)
+VALUES ('large');
+INSERT INTO stands (type)
+VALUES ('large');
+
 
 
 SELECT stands.id, type
