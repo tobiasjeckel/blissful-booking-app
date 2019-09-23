@@ -1,35 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBookingsAdmin } from "./actions";
+import { getBookingsAdmin, setWeek, deleteBooking } from "./actions";
 import { Link } from "react-router-dom";
 import AdminBooker from "./adminbooker";
 
 export default function AdminPanel() {
     const dispatch = useDispatch();
 
+    const selectedWeek = useSelector(state => {
+        return state.weekYear;
+    });
     const getBookings = e => {
         e.preventDefault();
         // console.log("submit button clicked", inputWeek);
-        dispatch(getBookingsAdmin(inputWeek));
+        dispatch(getBookingsAdmin(selectedWeek));
     };
     const bookingsAdmin = useSelector(state => {
         return state.bookingsAdmin;
     });
 
-    // bookingsAdmin &&
-    //     console.log(
-    //         "week: ",
-    //         bookingsAdmin[Object.keys(bookingsAdmin)[0]].iso_week
-    //     );
+    const adminBookingId = useSelector(state => {
+        return state.adminBookingId;
+    });
 
-    const getStands = () => {
-        console.log("get stands");
-    };
-
-    const [inputWeek, setInputWeek] = useState();
+    useEffect(() => {
+        dispatch(getBookingsAdmin(selectedWeek));
+    }, [adminBookingId]);
 
     const handleInputChange = e => {
-        setInputWeek(e.target.value);
+        // setInputWeek(e.target.value);
+        dispatch(setWeek(e.target.value));
+    };
+
+    const handleDelete = e => {
+        e.preventDefault();
+        dispatch(deleteBooking(e.target.value));
     };
     return (
         <React.Fragment>
@@ -86,17 +91,22 @@ export default function AdminPanel() {
                                         {booking.stand_id} | Type:{" "}
                                         {booking.type} | First Name:{" "}
                                         {booking.first} | Last Name:{" "}
-                                        {booking.last}
+                                        {booking.last} |
+                                        <button
+                                            value={booking.booking_id}
+                                            onClick={handleDelete}
+                                        >
+                                            Delete Booking
+                                        </button>
                                     </li>
                                 );
                             })}
                     </ul>
                 </div>
-                <br />
-                <p>Click here to get an overview of stands </p>
-                <button onClick={getStands}> Click for stands </button>
-                <br />
+
                 <AdminBooker />
+
+                <b />
             </div>
         </React.Fragment>
     );

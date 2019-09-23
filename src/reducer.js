@@ -34,5 +34,33 @@ export default function reducer(state = {}, action) {
         };
     }
 
+    if (action.type === "SET_WEEK") {
+        state = {
+            ...state,
+            weekYear: action.weekYear
+        };
+    }
+
+    if (action.type === "SET_ADMIN_STAND") {
+        state = {
+            ...state,
+            adminStand: action.adminStand
+        };
+    }
+
+    if (action.type === "ADMIN_BOOKING") {
+        state = {
+            ...state,
+            adminBookingId: action.adminBookingId
+        };
+    }
+
+    if (action.type === "DELETE_BOOKING") {
+        state = {
+            ...state,
+            adminBookingId: action.adminBookingId
+        };
+    }
+
     return state;
 }

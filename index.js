@@ -192,6 +192,32 @@ app.get("/api/admin/getbookings/:inputweek", (req, res) => {
             console.log("error when getting admin bookings", err);
         });
 });
+
+app.post("/api/makeAdminBooking", (req, res) => {
+    let userId = req.session.id;
+    let iso_week = moment(req.body.selectedWeek).isoWeek();
+    let iso_year = moment(req.body.selectedWeek).isoWeekYear();
+    db.makeAdminBooking(iso_week, iso_year, userId, req.body.selectedAdminStand)
+        .then(data => {
+            console.log(data.rows[0]);
+            res.json(data.rows[0]);
+        })
+        .catch(err => {
+            console.log("error when making admin booking: ", err);
+        });
+});
+
+app.post("/api/deletebooking", (req, res) => {
+    db.deleteBooking(req.body.booking_id)
+        .then(data => {
+            console.log(data.rows[0]);
+            res.json("");
+        })
+        .catch(err => {
+            console.log("error when deleting booking: ", err);
+        });
+});
+
 app.get("*", (req, res) => {
     if (req.session.id) {
         res.sendFile(__dirname + "/index.html");

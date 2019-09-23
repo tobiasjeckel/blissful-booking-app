@@ -80,6 +80,27 @@ exports.getBookingsAdmin = function(iso_week, iso_year) {
     );
 };
 
+exports.makeAdminBooking = function(iso_week, iso_year, userId, stand) {
+    return db.query(
+        `
+        INSERT INTO bookings (iso_week, iso_year, user_id, stand_id)
+        VALUES ($1, $2, $3, $4)
+        RETURNING id as bookings_id
+        `,
+        [iso_week, iso_year, userId, stand]
+    );
+};
+
+exports.deleteBooking = function(booking_id) {
+    return db.query(
+        `
+        DELETE FROM bookings
+        WHERE id = $1
+        RETURNING id
+        `,
+        [booking_id]
+    );
+};
 // exports.getFreeStands = function(iso_week, iso_year) {
 //     return db.query(
 //         `SELECT stands.id, type, iso_week

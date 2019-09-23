@@ -49,3 +49,44 @@ export function getBookingsAdmin(inputWeek) {
         };
     });
 }
+
+export function setWeek(week) {
+    return {
+        type: "SET_WEEK",
+        weekYear: week
+    };
+}
+
+export function setAdminStand(standNumber) {
+    return {
+        type: "SET_ADMIN_STAND",
+        adminStand: standNumber
+    };
+}
+
+export function makeAdminBooking(selectedAdminStand, selectedWeek) {
+    return axios
+        .post("/api/makeAdminBooking", {
+            selectedAdminStand,
+            selectedWeek
+        })
+        .then(({ data }) => {
+            return {
+                type: "ADMIN_BOOKING",
+                adminBookingId: data
+            };
+        });
+}
+
+export function deleteBooking(booking_id) {
+    return axios
+        .post("/api/deletebooking", {
+            booking_id
+        })
+        .then(({ data }) => {
+            return {
+                type: "DELETE_BOOKING",
+                adminBookingId: data
+            };
+        });
+}
