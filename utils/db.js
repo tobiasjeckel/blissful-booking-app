@@ -56,7 +56,7 @@ exports.getFreeStands = function(iso_week, iso_year) {
         FROM stands
         WHERE NOT EXISTS
             (
-                SELECT stand_id
+                SELECT stand_id, iso_week
                 FROM bookings
                 WHERE iso_week = $1 AND iso_year = $2 AND bookings.stand_id = stands.id
             )
@@ -64,3 +64,25 @@ exports.getFreeStands = function(iso_week, iso_year) {
         [iso_week, iso_year]
     );
 };
+
+exports.getBookingsAdmin = function(iso_week, iso_year) {
+    return db.query(
+        `
+        SELECT * from bookings
+        WHERE iso_week = $1 AND iso_year = $2
+        `,
+        [iso_week, iso_year]
+    );
+};
+
+// exports.getFreeStands = function(iso_week, iso_year) {
+//     return db.query(
+//         `SELECT stands.id, type, iso_week
+//         FROM stands
+//         JOIN bookings
+//         ON (stands.id = bookings.stand_id)
+//         WHERE bookings.stand_id IS NULL AND iso_week = $1 AND iso_year = $2
+//         `,
+//         [iso_week, iso_year]
+//     );
+// };

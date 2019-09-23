@@ -111,58 +111,87 @@ app.get("/welcome", (req, res) => {
 });
 
 app.get("/api/getcurrentweek", (req, res) => {
-    let userId = req.session.id;
     let currentWeek = moment().isoWeek(); //week starts on a monday
     let currentYear = moment().isoWeekYear();
     console.log(currentWeek, currentYear);
 
     db.getFreeStands(currentWeek, currentYear)
         .then(data => {
-            console.log("response: ", data.rows);
             res.json(data.rows);
         })
         .catch(err => {
             console.log("error when getting capacity: ", err);
         });
-
-    // let currentYear = moment().isoWeekYear();
-    // let eightWeeksFromNow = moment()
-    //     .add(8, "weeks")
-    //     .isoWeek();
-    // let yearEightWeeksFromNow = moment()
-    //     .add(8, "weeks")
-    //     .isoWeekYear();
-    // let weeksInYear = moment().isoWeeksInYear();
-    // console.log("weeks in the year", moment().isoWeeksInYear());
-
-    // for (
-    //     let i = moment().isoWeek();
-    //     i <
-    //     moment()
-    //         .add(8, "weeks")
-    //         .isoWeek();
-    //     i++
-    // ) {
-    //     console.log(i);
-    // }
-
-    // console.log("current week", currentWeek);
-    // console.log("8 weeks from now", eightWeeksFromNow, yearEightWeeksFromNow);
-    //add logic to deal with end of currentYear
-    // let freeStands = [];
-    // for (let i = currentWeek; i < currentWeek + 8; i++) {
-    //     freeStands[i] = db.getFreeStands(i);
-    // }
-    // Promise.all(freeStands)
-    //     .then(res.json(freeStands))
-    //     .catch(err => {
-    //         console.log(
-    //             "error when getting capacity of stands for next eight weeks: ",
-    //             err
-    //         );
-    //     });
 });
 
+app.get("/api/getcurrentplusone", (req, res) => {
+    let week = moment()
+        .add(1, "weeks")
+        .isoWeek(); //week starts on a monday
+    let year = moment()
+        .add(1, "weeks")
+        .isoWeekYear();
+
+    db.getFreeStands(week, year)
+        .then(data => {
+            // console.log("response for next week: ", data.rows);
+            res.json(data.rows);
+        })
+        .catch(err => {
+            console.log("error when getting capacity: ", err);
+        });
+});
+
+app.get("/api/getcurrentplustwo", (req, res) => {
+    let week = moment()
+        .add(2, "weeks")
+        .isoWeek(); //week starts on a monday
+    let year = moment()
+        .add(2, "weeks")
+        .isoWeekYear();
+
+    db.getFreeStands(week, year)
+        .then(data => {
+            // console.log("response for next week: ", data.rows);
+            res.json(data.rows);
+        })
+        .catch(err => {
+            console.log("error when getting capacity: ", err);
+        });
+});
+
+app.get("/api/getcurrentplusthree", (req, res) => {
+    let week = moment()
+        .add(3, "weeks")
+        .isoWeek(); //week starts on a monday
+    let year = moment()
+        .add(3, "weeks")
+        .isoWeekYear();
+
+    db.getFreeStands(week, year)
+        .then(data => {
+            // console.log("response for next week: ", data.rows);
+            res.json(data.rows);
+        })
+        .catch(err => {
+            console.log("error when getting capacity: ", err);
+        });
+});
+
+app.get("/api/admin/getbookings/:inputweek", (req, res) => {
+    let inputWeek = req.params.inputweek;
+    let iso_week = moment(inputWeek).isoWeek();
+    let iso_year = moment(inputWeek).isoWeekYear();
+
+    db.getBookingsAdmin(iso_week, iso_year)
+        .then(data => {
+            console.log(data.rows);
+            res.json(data.rows);
+        })
+        .catch(err => {
+            console.log("error when getting admin bookings", err);
+        });
+});
 app.get("*", (req, res) => {
     if (req.session.id) {
         res.sendFile(__dirname + "/index.html");
