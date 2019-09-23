@@ -77,7 +77,7 @@ export default class Registration extends React.Component {
                         onChange={this.handleChange}
                     />
                     <br />
-                    <button onClick={onClick} name="submit">
+                    <button onClick={this.handleSubmit} name="submit">
                         Sign up
                     </button>
                 </form>

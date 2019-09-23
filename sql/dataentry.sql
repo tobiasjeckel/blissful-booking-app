@@ -16,6 +16,10 @@ INSERT INTO bookings (iso_week, iso_year, user_id, stand_id)
 VALUES (39, 2019, 3, 3);
 INSERT INTO bookings (iso_week, iso_year, user_id, stand_id)
 VALUES (39, 2019, 4, 4);
+INSERT INTO bookings (iso_week, iso_year, user_id, stand_id)
+VALUES (39, 2019, 5, 5);
+INSERT INTO bookings (iso_week, iso_year, user_id, stand_id)
+VALUES (10, 2019, 9, 8);
 
 
 INSERT INTO stands (type)

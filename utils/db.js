@@ -68,7 +68,12 @@ exports.getFreeStands = function(iso_week, iso_year) {
 exports.getBookingsAdmin = function(iso_week, iso_year) {
     return db.query(
         `
-        SELECT * from bookings
+        SELECT bookings.id AS booking_id, bookings.user_id, bookings.iso_week, bookings.iso_year, stands.type, stands.id AS stand_id, users.first, users.last
+        FROM bookings
+        JOIN stands
+        ON (bookings.stand_id = stands.id)
+        JOIN users
+        ON (bookings.user_id = users.id)
         WHERE iso_week = $1 AND iso_year = $2
         `,
         [iso_week, iso_year]

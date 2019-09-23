@@ -1,5 +1,21 @@
 * {
     box-sizing: border-box;
-    background-color: lightblue;
     font-family: Verdana, Arial;
+}
+
+.bookingsOverview {
+    background-color: lightgrey;
+    border-top: 1px black solid;
+    border-bottom: 1px black solid;
+}
+
+.header {
+    background-color: lightblue;
+}
+
+.adminBooker {
+    background-color: lightgrey;
+    border-top: 1px black solid;
+    border-bottom: 1px black solid;
+    margin-top: 20px;
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBookingsAdmin } from "./actions";
 import { Link } from "react-router-dom";
+import AdminBooker from "./adminbooker";
 
 export default function AdminPanel() {
     const dispatch = useDispatch();
@@ -14,6 +15,13 @@ export default function AdminPanel() {
     const bookingsAdmin = useSelector(state => {
         return state.bookingsAdmin;
     });
+
+    // bookingsAdmin &&
+    //     console.log(
+    //         "week: ",
+    //         bookingsAdmin[Object.keys(bookingsAdmin)[0]].iso_week
+    //     );
+
     const getStands = () => {
         console.log("get stands");
     };
@@ -47,24 +55,48 @@ export default function AdminPanel() {
                     <button onClick={getBookings} name="submit">
                         Submit
                     </button>
-                    <p> {/*message*/} </p>
+                    <p> {/*message - todo - preventDefault*/} </p>
                 </form>
                 <br />
-                <div className="bookingsAdmin">
-                    {bookingsAdmin && (
+                <div className="bookingsOverview">
+                    {bookingsAdmin && Object.keys(bookingsAdmin).length > 0 ? (
                         <h3>
-                            Bookings for{" "}
+                            Bookings for week{" "}
                             {
-                                bookingsAdmin[
-                                    Object.keys(bookingsAdmin)[0].iso_week
-                                ]
-                            }{" "}
+                                bookingsAdmin[Object.keys(bookingsAdmin)[0]]
+                                    .iso_week
+                            }
+                            ,{" "}
+                            {
+                                bookingsAdmin[Object.keys(bookingsAdmin)[0]]
+                                    .iso_year
+                            }
                         </h3>
+                    ) : (
+                        <p>No bookings found</p>
                     )}
+                    <ul>
+                        {bookingsAdmin &&
+                            Object.keys(bookingsAdmin).length > 0 &&
+                            bookingsAdmin.map(booking => {
+                                return (
+                                    <li key={booking.booking_id}>
+                                        Booking ID: {booking.booking_id} | User:{" "}
+                                        {booking.user_id} | Stand:{" "}
+                                        {booking.stand_id} | Type:{" "}
+                                        {booking.type} | First Name:{" "}
+                                        {booking.first} | Last Name:{" "}
+                                        {booking.last}
+                                    </li>
+                                );
+                            })}
+                    </ul>
                 </div>
                 <br />
                 <p>Click here to get an overview of stands </p>
                 <button onClick={getStands}> Click for stands </button>
+                <br />
+                <AdminBooker />
             </div>
         </React.Fragment>
     );

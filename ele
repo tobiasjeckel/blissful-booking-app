@@ -1,0 +1,9 @@
+ id |   first   |   last   |     email     |                           password                           | bookings |         created_at         
+----+-----------+----------+---------------+--------------------------------------------------------------+----------+----------------------------
+  1 | AdminTobi | AdminJay | admin@admin   | $2a$10$L4P8HvB7PY7Gg8IJbJc7BODSk/K.F5sVO4x8t8CBnrr9GZosRn.OO |          | 2019-09-23 14:20:11.663695
+  2 | jacky     | wallacky | admin2@admin2 | $2a$10$LkOZaUdTI9JO60W0/G9F6uNutVI/YDFCnXlYRUM0vzf8ZtecmtSRe |          | 2019-09-23 14:27:48.762208
+  3 | mickey    | mouse    | admin3@admin3 | $2a$10$7S5E4ftAXwhnpik1GrLYRO7BJhSucUKJdXpkMhqmszAHRHT9LGijC |          | 2019-09-23 14:28:02.612436
+  4 | winnie    | pooh     | admin4@admin4 | $2a$10$2vWHNubLLrlCNZaF1egzi.V.3Wef4hJHFEJ9lUOdKT57BxKIkeNBK |          | 2019-09-23 14:28:24.3125
+  5 | Lucky     | Luke     | admin5@admin5 | $2a$10$vjk8cl3AvIX2xZ3mOXxWnOogZK9GVQQzn7aIA80HZ/GwlHhzXWPxS |          | 2019-09-23 14:29:00.265318
+(5 rows)
+
