@@ -2,8 +2,7 @@
 import axios from "./axios";
 
 export function getCurrentWeek() {
-    return axios.get("/api/getcurrentweek").then(({ data }) => {
-        console.log("current week: ", data);
+    return axios.get("/api/getanyweek/0").then(({ data }) => {
         return {
             type: "GET_CURRENT_WEEK",
             currentWeek: data
@@ -12,8 +11,7 @@ export function getCurrentWeek() {
 }
 
 export function getCurrentPlusOne() {
-    return axios.get("/api/getcurrentplusone").then(({ data }) => {
-        console.log("current plus one", data);
+    return axios.get("/api/getanyweek/1").then(({ data }) => {
         return {
             type: "GET_CURRENT_PLUS_ONE",
             currentPlusOne: data
@@ -22,8 +20,7 @@ export function getCurrentPlusOne() {
 }
 
 export function getCurrentPlusTwo() {
-    return axios.get("/api/getcurrentplustwo").then(({ data }) => {
-        console.log("current plus two", data);
+    return axios.get("/api/getanyweek/2").then(({ data }) => {
         return {
             type: "GET_CURRENT_PLUS_TWO",
             currentPlusTwo: data
@@ -32,8 +29,7 @@ export function getCurrentPlusTwo() {
 }
 
 export function getCurrentPlusThree() {
-    return axios.get("/api/getcurrentplusthree").then(({ data }) => {
-        console.log("current plus three", data);
+    return axios.get("/api/getanyweek/3").then(({ data }) => {
         return {
             type: "GET_CURRENT_PLUS_THREE",
             currentPlusThree: data
@@ -50,10 +46,10 @@ export function getBookingsAdmin(inputWeek) {
     });
 }
 
-export function setWeek(week) {
+export function setAdminWeek(week) {
     return {
-        type: "SET_WEEK",
-        weekYear: week
+        type: "SET_ADMIN_WEEK",
+        adminWeekYear: week
     };
 }
 
@@ -89,4 +85,13 @@ export function deleteBooking(booking_id) {
                 adminBookingId: data
             };
         });
+}
+
+export function setSelectedWeek(iso_week, iso_year) {
+    // console.log(iso_week, iso_year);
+    return {
+        type: "SET_SELECTED_WEEK",
+        selected_iso_week: iso_week,
+        selected_iso_year: iso_year
+    };
 }

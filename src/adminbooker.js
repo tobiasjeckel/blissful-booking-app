@@ -13,7 +13,7 @@ export default function AdminBooker() {
     });
 
     const selectedWeek = useSelector(state => {
-        return state.weekYear;
+        return state.adminWeekYear;
     });
 
     const makeBooking = e => {

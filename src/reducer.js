@@ -34,10 +34,10 @@ export default function reducer(state = {}, action) {
         };
     }
 
-    if (action.type === "SET_WEEK") {
+    if (action.type === "SET_ADMIN_WEEK") {
         state = {
             ...state,
-            weekYear: action.weekYear
+            adminWeekYear: action.adminWeekYear
         };
     }
 
@@ -59,6 +59,14 @@ export default function reducer(state = {}, action) {
         state = {
             ...state,
             adminBookingId: action.adminBookingId
+        };
+    }
+
+    if (action.type === "SET_SELECTED_WEEK") {
+        state = {
+            ...state,
+            selected_iso_week: action.selected_iso_week,
+            selected_iso_year: action.selected_iso_year
         };
     }
 

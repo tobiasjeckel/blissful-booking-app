@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBookingsAdmin, setWeek, deleteBooking } from "./actions";
+import { getBookingsAdmin, setAdminWeek, deleteBooking } from "./actions";
 import { Link } from "react-router-dom";
 import AdminBooker from "./adminbooker";
 
@@ -8,7 +8,7 @@ export default function AdminPanel() {
     const dispatch = useDispatch();
 
     const selectedWeek = useSelector(state => {
-        return state.weekYear;
+        return state.adminWeekYear;
     });
     const getBookings = e => {
         e.preventDefault();
@@ -28,8 +28,8 @@ export default function AdminPanel() {
     }, [adminBookingId]);
 
     const handleInputChange = e => {
-        // setInputWeek(e.target.value);
-        dispatch(setWeek(e.target.value));
+        e.preventDefault();
+        dispatch(setAdminWeek(e.target.value));
     };
 
     const handleDelete = e => {

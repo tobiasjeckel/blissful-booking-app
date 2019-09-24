@@ -4,12 +4,12 @@ import {
     getCurrentWeek,
     getCurrentPlusOne,
     getCurrentPlusTwo,
-    getCurrentPlusThree
+    getCurrentPlusThree,
+    setSelectedWeek
 } from "./actions";
 import { Link } from "react-router-dom";
 
 export default function Bookings() {
-    console.log("Bookings has mounted");
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -19,9 +19,6 @@ export default function Bookings() {
         dispatch(getCurrentPlusThree());
     }, []);
 
-    // const currentWeek = useSelector(state => {
-    //     return state.currentWeek;
-    // });
     const currentWeek = useSelector(state => {
         return state.currentWeek;
     });
@@ -34,10 +31,10 @@ export default function Bookings() {
     const currentPlusThree = useSelector(state => {
         return state.currentPlusThree;
     });
-    currentWeek && console.log(Object.keys(currentWeek).length);
-    currentPlusOne && console.log(Object.keys(currentPlusOne).length);
-    currentPlusTwo && console.log(Object.keys(currentPlusTwo).length);
-    currentPlusThree && console.log(Object.keys(currentPlusThree).length);
+
+    const onClickSetSelectedWeek = (iso_week, iso_year) => {
+        dispatch(setSelectedWeek(iso_week, iso_year));
+    };
 
     return (
         <React.Fragment>
@@ -45,8 +42,14 @@ export default function Bookings() {
             <br />
             <div className="week">
                 {currentWeek && Object.keys(currentWeek).length > 0 ? (
-                    <Link to={"/createbooking"}>
-                        <p>Click here to make a booking for this week</p>
+                    <Link
+                        to={"/createbooking"}
+                        onClick={() => onClickSetSelectedWeek("currentWeek")}
+                    >
+                        <p>
+                            Click here to make a booking for this week{" "}
+                            {currentWeek[Object.keys(currentWeek)[0]].iso_week}
+                        </p>
                     </Link>
                 ) : (
                     <p>Sorry, no more stands are available for this week</p>
@@ -54,8 +57,17 @@ export default function Bookings() {
             </div>
             <div className="week">
                 {currentPlusOne && Object.keys(currentPlusOne).length > 0 ? (
-                    <Link to={"/createbooking"}>
-                        <p>Click here to make a booking for next week</p>
+                    <Link
+                        to={"/createbooking"}
+                        onClick={() => onClickSetSelectedWeek("currentPlusOne")}
+                    >
+                        <p>
+                            Click here to make a booking for next week{" "}
+                            {
+                                currentPlusOne[Object.keys(currentPlusOne)[0]]
+                                    .iso_week
+                            }
+                        </p>
                     </Link>
                 ) : (
                     <p>Sorry, no more stands are available for this week</p>
@@ -63,8 +75,17 @@ export default function Bookings() {
             </div>
             <div className="week">
                 {currentPlusTwo && Object.keys(currentPlusTwo).length > 0 ? (
-                    <Link to={"/createbooking"}>
-                        <p>Click here to make a booking for in two weeks</p>
+                    <Link
+                        to={"/createbooking"}
+                        onClick={() => onClickSetSelectedWeek("currentPlusTwo")}
+                    >
+                        <p>
+                            Click here to make a booking for week{" "}
+                            {
+                                currentPlusTwo[Object.keys(currentPlusTwo)[0]]
+                                    .iso_week
+                            }
+                        </p>
                     </Link>
                 ) : (
                     <p>Sorry, no more stands are available for this week</p>
@@ -73,8 +94,20 @@ export default function Bookings() {
             <div className="week">
                 {currentPlusThree &&
                 Object.keys(currentPlusThree).length > 0 ? (
-                    <Link to={"/createbooking"}>
-                        <p>Click here to make a booking for in three weeks</p>
+                    <Link
+                        to={"/createbooking"}
+                        onClick={() =>
+                            onClickSetSelectedWeek("currentPlusThree")
+                        }
+                    >
+                        <p>
+                            Click here to make a booking for week{" "}
+                            {
+                                currentPlusThree[
+                                    Object.keys(currentPlusThree)[0]
+                                ].iso_week
+                            }
+                        </p>
                     </Link>
                 ) : (
                     <p>Sorry, no more stands are available for this week</p>
@@ -83,3 +116,12 @@ export default function Bookings() {
         </React.Fragment>
     );
 }
+
+// onClick={() =>
+//     onClickSetSelectedWeek(
+//         currentWeek[Object.keys(currentWeek)[0]]
+//             .iso_week,
+//         currentWeek[Object.keys(currentWeek)[0]]
+//             .iso_year
+//     )
+// }
