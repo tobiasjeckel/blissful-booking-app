@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { makeBooking } from "./actions";
 import { Link } from "react-router-dom";
 
-export default function CreateBooking() {
+export default function CreateBooking(props) {
     const dispatch = useDispatch();
 
     const selectedWeek = useSelector(state => {
@@ -12,6 +12,10 @@ export default function CreateBooking() {
 
     const stands = useSelector(state => {
         return state[selectedWeek];
+    });
+
+    const bookingConfirmation = useSelector(state => {
+        return state.bookingConfirmation;
     });
 
     if (!stands) {
@@ -37,6 +41,8 @@ export default function CreateBooking() {
                     nextAvailableSmallStand.id
                 )
             );
+            props.history.push("/confirmation");
+            //got to confirmation page here
         } else if (e.target.value == "large") {
             dispatch(
                 makeBooking(

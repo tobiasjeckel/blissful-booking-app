@@ -6,9 +6,20 @@ import { Link } from "react-router-dom";
 export default function Confirmation() {
     console.log("Confirmation has mounted");
     const dispatch = useDispatch();
+    const bookingConfirmation = useSelector(state => {
+        return state.bookingConfirmation;
+    });
+    console.log(bookingConfirmation);
     return (
         <React.Fragment>
-            <div>Your stand has been booked</div>
+            <div>
+                {bookingConfirmation && (
+                    <p>
+                        Your stand with {bookingConfirmation.bookings_id} has
+                        been booked
+                    </p>
+                )}
+            </div>
         </React.Fragment>
     );
 }

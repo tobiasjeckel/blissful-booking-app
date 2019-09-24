@@ -119,12 +119,3 @@ export default function Bookings() {
         </React.Fragment>
     );
 }
-
-// onClick={() =>
-//     onClickSetSelectedWeek(
-//         currentWeek[Object.keys(currentWeek)[0]]
-//             .iso_week,
-//         currentWeek[Object.keys(currentWeek)[0]]
-//             .iso_year
-//     )
-// }
