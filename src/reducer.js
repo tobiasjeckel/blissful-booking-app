@@ -77,5 +77,12 @@ export default function reducer(state = {}, action) {
         };
     }
 
+    if (action.type === "GET_MY_BOOKINGS") {
+        state = {
+            ...state,
+            myBookings: action.myBookings
+        };
+    }
+
     return state;
 }

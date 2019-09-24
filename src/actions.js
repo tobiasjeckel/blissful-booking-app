@@ -98,6 +98,7 @@ export function setSelectedWeek(iso_week, iso_year) {
 
 export function makeBooking(week, year, stand_id) {
     // console.log("in action", week, year, stand_id);
+
     return axios
         .post("/api/makebooking", {
             week,
@@ -111,4 +112,12 @@ export function makeBooking(week, year, stand_id) {
                 bookingConfirmation: data
             };
         });
+}
+export function getMyBookings() {
+    return axios.get("/api/getmybookings").then(({ data }) => {
+        return {
+            type: "GET_MY_BOOKINGS",
+            myBookings: data
+        };
+    });
 }

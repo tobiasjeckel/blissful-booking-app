@@ -107,21 +107,20 @@ exports.makeBooking = function(iso_week, iso_year, userId, stand) {
         `
         INSERT INTO bookings (iso_week, iso_year, user_id, stand_id)
         VALUES ($1, $2, $3, $4)
-        RETURNING id as bookings_id, iso_week, iso_year, stand_id
+        RETURNING id as booking_id, iso_week, iso_year, stand_id
         `,
         [iso_week, iso_year, userId, stand]
     );
 };
-// exports.getFreeStands = function(iso_week, iso_year) {
-//     return db.query(
-//         `SELECT stands.id, type, iso_week
-//         FROM stands
-//         JOIN bookings
-//         ON (stands.id = bookings.stand_id)
-//         WHERE bookings.stand_id IS NULL AND iso_week = $1 AND iso_year = $2
-//         `,
-//         [iso_week, iso_year]
-//     );
-// };
+
+exports.getMyBookings = function(userId) {
+    return db.query(
+        `
+        SELECT * from BOOKINGS
+        WHERE  user_id = $1
+        `,
+        [userId]
+    );
+};
 
 //make stand_id and user_id a primary id

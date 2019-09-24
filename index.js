@@ -174,17 +174,26 @@ app.post("/api/deletebooking", (req, res) => {
 
 app.post("/api/makebooking", (req, res) => {
     let userId = req.session.id;
-    console.log(req.body);
-    console.log(userId);
-    db.makeBooking(
-        req.body.week,
-        req.body.year,
-        userId,
-        req.body.stand_id
-    ).then(data => {
-        console.log(data.rows[0]);
-        res.json(data.rows[0]);
-    });
+    db.makeBooking(req.body.week, req.body.year, userId, req.body.stand_id)
+        .then(data => {
+            console.log(data.rows[0]);
+            res.json(data.rows[0]);
+        })
+        .catch(err => {
+            console.log("error when making booking: ", err);
+        });
+});
+
+app.get("/api/getmybookings", (req, res) => {
+    let userId = req.session.id;
+    db.getMyBookings(userId)
+        .then(data => {
+            console.log(data.rows);
+            res.json(data.rows);
+        })
+        .catch(err => {
+            console.log("error when getting my bookings: ", err);
+        });
 });
 
 app.get("*", (req, res) => {

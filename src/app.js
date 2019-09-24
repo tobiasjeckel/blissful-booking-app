@@ -14,7 +14,10 @@ export default function App() {
         <BrowserRouter>
             <React.Fragment>
                 <div className="header">
-                    <h1>Hello Booking Tool. This is the header</h1>
+                    <h1>Mauerpark Booking Tool</h1>
+                    <Link to={"/bookings"}>Make a booking</Link>
+                    <Link to={"/mybookings"}>View my bookings</Link>
+                    <Link to={"/adminpanel"}>Admin Panel</Link>
                     <a href="/logout">Log out</a>
                 </div>
                 <Route path="/bookings" component={Bookings} />

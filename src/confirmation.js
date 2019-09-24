@@ -15,8 +15,10 @@ export default function Confirmation() {
             <div>
                 {bookingConfirmation && (
                     <p>
-                        Your stand with {bookingConfirmation.bookings_id} has
-                        been booked
+                        Your stand with stand id{" "}
+                        <strong>{bookingConfirmation.stand_id}</strong> has been
+                        booked. Your booking id is{" "}
+                        <strong>{bookingConfirmation.booking_id}</strong>.
                     </p>
                 )}
             </div>

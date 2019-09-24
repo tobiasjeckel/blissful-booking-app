@@ -51,6 +51,7 @@ export default function CreateBooking(props) {
                     nextAvailableLargeStand.id
                 )
             );
+            props.history.push("/confirmation");
         } else {
             return null;
         }
