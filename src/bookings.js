@@ -7,7 +7,8 @@ import {
     getCurrentPlusThree,
     setSelectedWeek
 } from "./actions";
-import { Link } from "react-router-dom";
+import CreateBooking from "./createbooking";
+import { Route, Link } from "react-router-dom";
 
 export default function Bookings() {
     const dispatch = useDispatch();
@@ -43,7 +44,7 @@ export default function Bookings() {
             <div className="week">
                 {currentWeek && Object.keys(currentWeek).length > 0 ? (
                     <Link
-                        to={"/createbooking"}
+                        to={"/bookings/createbooking/"}
                         onClick={() => onClickSetSelectedWeek("currentWeek")}
                     >
                         <p>
@@ -58,7 +59,7 @@ export default function Bookings() {
             <div className="week">
                 {currentPlusOne && Object.keys(currentPlusOne).length > 0 ? (
                     <Link
-                        to={"/createbooking"}
+                        to={"/bookings/createbooking"}
                         onClick={() => onClickSetSelectedWeek("currentPlusOne")}
                     >
                         <p>
@@ -76,7 +77,7 @@ export default function Bookings() {
             <div className="week">
                 {currentPlusTwo && Object.keys(currentPlusTwo).length > 0 ? (
                     <Link
-                        to={"/createbooking"}
+                        to={"/bookings/createbooking"}
                         onClick={() => onClickSetSelectedWeek("currentPlusTwo")}
                     >
                         <p>
@@ -95,7 +96,7 @@ export default function Bookings() {
                 {currentPlusThree &&
                 Object.keys(currentPlusThree).length > 0 ? (
                     <Link
-                        to={"/createbooking"}
+                        to={"/bookings/createbooking"}
                         onClick={() =>
                             onClickSetSelectedWeek("currentPlusThree")
                         }
@@ -113,6 +114,8 @@ export default function Bookings() {
                     <p>Sorry, no more stands are available for this week</p>
                 )}
             </div>
+
+            <Route path="/bookings/createbooking" component={CreateBooking} />
         </React.Fragment>
     );
 }

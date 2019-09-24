@@ -17,7 +17,7 @@ export default function App() {
                     <h1>Hello Booking Tool. This is the header</h1>
                     <a href="/logout">Log out</a>
                 </div>
-                <Route exact path="/" component={Bookings} />
+                <Route path="/bookings" component={Bookings} />
                 <Route path="/createbooking" component={CreateBooking} />
                 <Route path="/confirmation" component={Confirmation} />
                 <Route path="/adminpanel" component={Admin} />

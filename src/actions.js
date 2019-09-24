@@ -95,3 +95,20 @@ export function setSelectedWeek(iso_week, iso_year) {
         selected_iso_year: iso_year
     };
 }
+
+export function makeBooking(week, year, stand_id) {
+    // console.log("in action", week, year, stand_id);
+    return axios
+        .post("/api/makebooking", {
+            week,
+            year,
+            stand_id
+        })
+        .then(({ data }) => {
+            console.log("action response", data);
+            return {
+                type: "MAKE_BOOKING",
+                bookingConfirmation: data
+            };
+        });
+}

@@ -70,5 +70,12 @@ export default function reducer(state = {}, action) {
         };
     }
 
+    if (action.type === "MAKE_BOOKING") {
+        state = {
+            ...state,
+            bookingConfirmation: action.bookingConfirmation
+        };
+    }
+
     return state;
 }

@@ -101,6 +101,17 @@ exports.deleteBooking = function(booking_id) {
         [booking_id]
     );
 };
+
+exports.makeBooking = function(iso_week, iso_year, userId, stand) {
+    return db.query(
+        `
+        INSERT INTO bookings (iso_week, iso_year, user_id, stand_id)
+        VALUES ($1, $2, $3, $4)
+        RETURNING id as bookings_id, iso_week, iso_year, stand_id
+        `,
+        [iso_week, iso_year, userId, stand]
+    );
+};
 // exports.getFreeStands = function(iso_week, iso_year) {
 //     return db.query(
 //         `SELECT stands.id, type, iso_week
@@ -112,3 +123,5 @@ exports.deleteBooking = function(booking_id) {
 //         [iso_week, iso_year]
 //     );
 // };
+
+//make stand_id and user_id a primary id
