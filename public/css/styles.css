@@ -15,7 +15,7 @@ body {
 }
 
 .header {
-    background-color: #abebc6;
+    background-color: #16a085;
     display: flex;
     box-shadow: 0 2px 5px 0 #cecece;
     align-items: center;
@@ -46,9 +46,27 @@ a:hover {
     font-weight: 700;
 }
 
+a,
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar a:hover {
+    font-weight: 700;
+    color: white;
+}
+
+.navbar a,
+.navbar a:visited {
+    text-decoration: none;
+    color: white;
+}
+
 .header h2 {
     margin: 0 1vw;
     padding: 1.5vw 0;
+    color: white;
 }
 
 .navlink {
