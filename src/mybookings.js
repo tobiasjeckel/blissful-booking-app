@@ -26,7 +26,8 @@ export default function MyBookings() {
                     return (
                         <li key={booking.id}>
                             Booking ID: {booking.id} | Stand: {booking.stand_id}{" "}
-                            | Week: {booking.iso_week} {booking.iso_year}
+                            | Week: {booking.iso_week} {booking.iso_year} | Day:{" "}
+                            {booking.day}
                         </li>
                     );
                 })}

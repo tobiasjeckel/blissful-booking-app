@@ -50,6 +50,8 @@ export default function Bookings() {
                         <p>
                             Click here to make a booking for this week{" "}
                             {currentWeek[Object.keys(currentWeek)[0]].iso_week}
+                            {", "}
+                            {currentWeek[Object.keys(currentWeek)[0]].day}
                         </p>
                     </Link>
                 ) : (
@@ -68,6 +70,8 @@ export default function Bookings() {
                                 currentPlusOne[Object.keys(currentPlusOne)[0]]
                                     .iso_week
                             }
+                            {", "}
+                            {currentPlusOne[Object.keys(currentPlusOne)[0]].day}
                         </p>
                     </Link>
                 ) : (
@@ -86,6 +90,8 @@ export default function Bookings() {
                                 currentPlusTwo[Object.keys(currentPlusTwo)[0]]
                                     .iso_week
                             }
+                            {", "}
+                            {currentPlusTwo[Object.keys(currentPlusTwo)[0]].day}
                         </p>
                     </Link>
                 ) : (
@@ -108,10 +114,16 @@ export default function Bookings() {
                                     Object.keys(currentPlusThree)[0]
                                 ].iso_week
                             }
+                            {", "}
+                            {
+                                currentPlusThree[
+                                    Object.keys(currentPlusThree)[0]
+                                ].day
+                            }
                         </p>
                     </Link>
                 ) : (
-                    <p>Sorry, no more stands are available for this week</p>
+                    <p>Sorry, no more stands are available this week</p>
                 )}
             </div>
 

@@ -118,13 +118,18 @@ app.get("/api/getanyweek/:adder", (req, res) => {
     let year = moment()
         .add(adder, "weeks")
         .isoWeekYear();
+    let day = moment()
+        .add(adder, "weeks")
+        .isoWeekday(7)
+        .format("LL");
 
-    db.getFreeStands(week, year)
+    db.getFreeStands(week, year, day)
         .then(data => {
             for (let prop in data.rows) {
                 // console.log(prop);
                 data.rows[prop]["iso_week"] = week;
                 data.rows[prop]["iso_year"] = year;
+                data.rows[prop]["day"] = day;
             }
             res.json(data.rows);
         })
@@ -140,7 +145,7 @@ app.get("/api/admin/getbookings/:inputweek", (req, res) => {
 
     db.getBookingsAdmin(iso_week, iso_year)
         .then(data => {
-            console.log(data.rows);
+            // console.log(data.rows);
             res.json(data.rows);
         })
         .catch(err => {
@@ -154,7 +159,7 @@ app.post("/api/makeAdminBooking", (req, res) => {
     let iso_year = moment(req.body.selectedWeek).isoWeekYear();
     db.makeAdminBooking(iso_week, iso_year, userId, req.body.selectedAdminStand)
         .then(data => {
-            console.log(data.rows[0]);
+            console.log("made admin booking", data.rows[0]);
             res.json(data.rows[0]);
         })
         .catch(err => {
@@ -163,9 +168,11 @@ app.post("/api/makeAdminBooking", (req, res) => {
 });
 
 app.post("/api/deletebooking", (req, res) => {
+    console.log(req.body.booking_id);
     db.deleteBooking(req.body.booking_id)
-        .then(() => {
-            res.json("");
+        .then(data => {
+            console.log("deleted booking: ", data.rows[0]);
+            res.json(data.rows[0]);
         })
         .catch(err => {
             console.log("error when deleting booking: ", err);
@@ -176,7 +183,6 @@ app.post("/api/makebooking", (req, res) => {
     let userId = req.session.id;
     db.makeBooking(req.body.week, req.body.year, userId, req.body.stand_id)
         .then(data => {
-            console.log(data.rows[0]);
             res.json(data.rows[0]);
         })
         .catch(err => {
@@ -188,7 +194,19 @@ app.get("/api/getmybookings", (req, res) => {
     let userId = req.session.id;
     db.getMyBookings(userId)
         .then(data => {
-            console.log(data.rows);
+            console.log(
+                moment(data.rows[2].iso_year + "-W" + data.rows[0].iso_week)
+                    .isoWeekday(7)
+                    .format("LL")
+            );
+            for (let prop in data.rows) {
+                // console.log(prop);
+                data.rows[prop]["day"] = moment(
+                    data.rows[prop].iso_year + "-W" + data.rows[prop].iso_week
+                )
+                    .isoWeekday(7)
+                    .format("LL");
+            }
             res.json(data.rows);
         })
         .catch(err => {

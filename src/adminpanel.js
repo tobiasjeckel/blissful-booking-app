@@ -24,10 +24,11 @@ export default function AdminPanel() {
     });
 
     useEffect(() => {
-        dispatch(getBookingsAdmin(selectedWeek));
+        selectedWeek && dispatch(getBookingsAdmin(selectedWeek));
     }, [adminBookingId]);
 
     const handleInputChange = e => {
+        console.log(e.target.value);
         e.preventDefault();
         dispatch(setAdminWeek(e.target.value));
     };
@@ -51,7 +52,7 @@ export default function AdminPanel() {
                         type="week"
                         name="week"
                         id="camp-week"
-                        min="2019-W10"
+                        min="2019-W39"
                         max="2019-W49"
                         onChange={handleInputChange}
                         required

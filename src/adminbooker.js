@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 export default function AdminBooker() {
     const dispatch = useDispatch();
     const handleInputChange = e => {
+        console.log("dispatching date");
         dispatch(setAdminStand(e.target.value));
     };
     const selectedAdminStand = useSelector(state => {
