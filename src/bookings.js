@@ -39,8 +39,6 @@ export default function Bookings() {
 
     return (
         <React.Fragment>
-            <div>here the available dates will be rendered</div>
-            <br />
             <div className="week">
                 {currentWeek && Object.keys(currentWeek).length > 0 ? (
                     <Link

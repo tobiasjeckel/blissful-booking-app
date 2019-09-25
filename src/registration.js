@@ -46,37 +46,35 @@ export default class Registration extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="registration">
                 {this.state.error && (
                     <h2>Ooops, something went wrong. Please try again!</h2>
                 )}
                 <form>
                     <input
+                        type="text"
                         name="first"
-                        placeholder="first"
+                        placeholder="First Name"
                         onChange={this.handleChange}
                     />
-                    <br />
                     <input
+                        type="text"
                         name="last"
-                        placeholder="last"
+                        placeholder="Last Name"
                         onChange={this.handleChange}
                     />
-                    <br />
                     <input
                         type="email"
                         name="email"
-                        placeholder="email"
+                        placeholder="Email"
                         onChange={this.handleChange}
                     />
-                    <br />
                     <input
                         type="password"
                         name="password"
-                        placeholder="password"
+                        placeholder="Password"
                         onChange={this.handleChange}
                     />
-                    <br />
                     <button onClick={this.handleSubmit} name="submit">
                         Sign up
                     </button>

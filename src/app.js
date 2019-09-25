@@ -14,11 +14,21 @@ export default function App() {
         <BrowserRouter>
             <React.Fragment>
                 <div className="header">
-                    <h1>Mauerpark Booking Tool</h1>
-                    <Link to={"/bookings"}>Make a booking</Link>
-                    <Link to={"/mybookings"}>View my bookings</Link>
-                    <Link to={"/adminpanel"}>Admin Panel</Link>
-                    <a href="/logout">Log out</a>
+                    <h2>Mauerpark Booking Tool</h2>
+                    <div className="navbar">
+                        <Link className="navlink" to={"/bookings"}>
+                            Make a booking
+                        </Link>
+                        <Link className="navlink" to={"/mybookings"}>
+                            View my bookings
+                        </Link>
+                        <Link className="navlink" to={"/adminpanel"}>
+                            Admin Panel
+                        </Link>
+                        <a className="navlink" href="/logout">
+                            Log out
+                        </a>
+                    </div>
                 </div>
                 <Route path="/bookings" component={Bookings} />
                 <Route path="/createbooking" component={CreateBooking} />

@@ -11,8 +11,18 @@ export default class Welcome extends React.Component {
     render() {
         return (
             <HashRouter>
-                <div>
-                    <h1>Welcome to Blissfull Booking Tool!</h1>
+                <div className="reglog">
+                    <div className="splash">
+                        <img src="/assets/market_splash.jpg" />
+                        <div className="splashcontent">
+                            <div className="splashheader">
+                                <h1>
+                                    Book your stand at Berlins hippest Flea
+                                    Markets
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
                     <div>
                         <Route exact path="/" component={Registration} />
                         <Route path="/login" component={Login} />
@@ -28,9 +38,19 @@ export default class Welcome extends React.Component {
         );
     }
     LoginLink() {
-        return <Link to="/login">Already a member? Please log in</Link>;
+        return (
+            <Link to="/login">
+                <p className="already">Already a member? Please log in</p>
+            </Link>
+        );
     }
     RegistrationLink() {
-        return <Link to="..">Don&apos;t have an account? Please register</Link>;
+        return (
+            <Link to="..">
+                <p className="already">
+                    Don&apos;t have an account? Please register
+                </p>
+            </Link>
+        );
     }
 }

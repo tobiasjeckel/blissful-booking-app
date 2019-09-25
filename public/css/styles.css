@@ -1,6 +1,11 @@
 * {
     box-sizing: border-box;
-    font-family: Verdana, Arial;
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+    margin: 0;
+    font-size: 1.7vw;
 }
 
 .bookingsOverview {
@@ -10,7 +15,11 @@
 }
 
 .header {
-    background-color: lightblue;
+    background-color: #abebc6;
+    display: flex;
+    box-shadow: 0 2px 5px 0 #cecece;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .adminBooker {
@@ -25,4 +34,128 @@
     border-top: 1px black solid;
     border-bottom: 1px black solid;
     margin-top: 20px;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    font-weight: 700;
+}
+
+.header h2 {
+    margin: 0 1vw;
+    padding: 1.5vw 0;
+}
+
+.navlink {
+    font-size: 1.9vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    padding-bottom: 1vw;
+    border-bottom: 2px solid;
+}
+
+.navlink:hover {
+    font-weight: 800;
+    border-bottom: 3px solid;
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.splash img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.splashcontent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+}
+.splashheader {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: hsla(0, 0%, 100%, 0.8);
+    margin-top: 20vh;
+}
+
+.registration,
+.login {
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reglog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.already {
+    font-size: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 2vh;
+    padding: 4px;
+    width: 220px;
+    height: 32px;
+    border: none;
+    border-bottom: 1px solid #aaa;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    transition: 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-bottom: 2px solid #16a085;
+    color: #16a085;
+    transition: 0.2s ease;
+}
+
+button {
+    margin-top: 28px;
+    width: 180px;
+    height: 48px;
+    background: #16a085;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 22px;
+    padding: 0.5vw;
+    text-transform: uppercase;
+    transition: 0.1s ease;
+    cursor: pointer;
+}
+
+button:hover,
+button:focus {
+    opacity: 0.8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    transition: 0.1s ease;
+}
+
+input[type="submit"]:active {
+    opacity: 1;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    transition: 0.1s ease;
 }
