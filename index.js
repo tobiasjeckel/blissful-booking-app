@@ -121,7 +121,7 @@ app.get("/api/getanyweek/:adder", (req, res) => {
     let day = moment()
         .add(adder, "weeks")
         .isoWeekday(7)
-        .format("LL");
+        .format("YYYY-MM-DD");
 
     db.getFreeStands(week, year, day)
         .then(data => {

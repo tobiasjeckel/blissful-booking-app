@@ -45,6 +45,39 @@ export default function Bookings() {
                         to={"/bookings/createbooking/"}
                         onClick={() => onClickSetSelectedWeek("currentWeek")}
                     >
+                        <div className="week">
+                            <time dateTime="" className="icon">
+                                <em>Sunday</em>
+                                <strong>
+                                    {new Date(
+                                        currentWeek[
+                                            Object.keys(currentWeek)[0]
+                                        ].day
+                                    ).toLocaleDateString("en-US", {
+                                        month: "long"
+                                    })}
+                                </strong>
+                                <span>
+                                    {new Date(
+                                        currentWeek[
+                                            Object.keys(currentWeek)[0]
+                                        ].day
+                                    ).getDate()}
+                                </span>
+                            </time>
+                        </div>
+                    </Link>
+                ) : (
+                    <p>Sorry, no more stands are available for this week</p>
+                )}
+            </div>
+
+            <div className="week">
+                {currentWeek && Object.keys(currentWeek).length > 0 ? (
+                    <Link
+                        to={"/bookings/createbooking/"}
+                        onClick={() => onClickSetSelectedWeek("currentWeek")}
+                    >
                         <p>
                             Click here to make a booking for this week{" "}
                             {currentWeek[Object.keys(currentWeek)[0]].iso_week}

@@ -57,6 +57,7 @@ export default function CreateBooking(props) {
                     nextAvailableSmallStand.id
                 )
             );
+            dispatch(closeModal());
             props.history.push("/confirmation");
             //got to confirmation page here
         } else if (e.target.value == "large") {
@@ -67,6 +68,7 @@ export default function CreateBooking(props) {
                     nextAvailableLargeStand.id
                 )
             );
+            dispatch(closeModal());
             props.history.push("/confirmation");
         } else {
             return null;
@@ -79,7 +81,7 @@ export default function CreateBooking(props) {
             <div className="stands">
                 <div>
                     <h4>Small Stand</h4>
-                    <img src="/assets/booth_icon.svg" />
+                    <img className="booth_icon" src="/assets/booth_icon.svg" />
                     <p> ⟵ 3m ⟶ </p>
                     {smallStands && smallStands.length > 0 ? (
                         <button
@@ -95,7 +97,7 @@ export default function CreateBooking(props) {
                 </div>
                 <div>
                     <h4>Large Stand</h4>
-                    <img src="/assets/booth_icon.svg" />
+                    <img className="booth_icon" src="/assets/booth_icon.svg" />
                     <p> ⟵ 6m ⟶ </p>
                     {largeStands && largeStands.length > 0 ? (
                         <button
