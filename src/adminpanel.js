@@ -38,16 +38,12 @@ export default function AdminPanel() {
         dispatch(deleteBooking(e.target.value));
     };
     return (
-        <React.Fragment>
+        <div className="component">
             <div>
-                <p>
-                    Hello admin, change stuff here and get overview of bookings
-                </p>
-            </div>
-            <div>
-                <p>Select a week to get an overview of bookings</p>
                 <form>
-                    <label htmlFor="week">Choose a week:</label>
+                    <label htmlFor="week">
+                        Select a week to get an overview of bookings:{" "}
+                    </label>
                     <input
                         type="week"
                         name="week"
@@ -57,11 +53,13 @@ export default function AdminPanel() {
                         onChange={handleInputChange}
                         required
                     />
-                    <br />
-                    <button onClick={getBookings} name="submit">
+                    <button
+                        id="selectbookingsbutton"
+                        onClick={getBookings}
+                        name="submit"
+                    >
                         Submit
                     </button>
-                    <p> {/*message - todo - preventDefault*/} </p>
                 </form>
                 <br />
                 <div className="bookingsOverview">
@@ -109,6 +107,6 @@ export default function AdminPanel() {
 
                 <b />
             </div>
-        </React.Fragment>
+        </div>
     );
 }

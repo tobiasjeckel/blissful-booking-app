@@ -19,7 +19,7 @@ export default function MyBookings() {
     }
 
     return (
-        <React.Fragment>
+        <div className="component">
             <h3>These are my bookings</h3>
             <ul>
                 {myBookings.map(booking => {
@@ -32,6 +32,6 @@ export default function MyBookings() {
                     );
                 })}
             </ul>
-        </React.Fragment>
+        </div>
     );
 }

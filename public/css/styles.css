@@ -189,6 +189,10 @@ input[type="submit"]:active {
     margin-bottom: 20px;
 }
 
+#selectbookingsbutton {
+    margin-left: 15px;
+}
+
 #overlaycontent {
     position: fixed;
     top: 30px;
@@ -229,12 +233,37 @@ input[type="submit"]:active {
 
 .booth_icon {
     height: 200px;
-    width: 200px;
+    /* width: 200px; */
 }
 
 .weeks {
     display: flex;
     justify-content: space-evenly;
+}
+
+#clickonavailable {
+    margin-left: 1vw;
+}
+
+#completebooking {
+    width: 300px;
+}
+
+.disclaimer {
+    margin: 50px;
+}
+
+.highlightcolor {
+    color: #16a085;
+}
+
+.highlightcolorlarge {
+    color: #16a085;
+    font-size: 4vw;
+}
+
+.component {
+    padding: 10px;
 }
 
 /* calendar styling */

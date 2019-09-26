@@ -38,8 +38,10 @@ export default function Bookings() {
     };
 
     return (
-        <React.Fragment>
-            <h3>Click on an available date to make a booking</h3>
+        <div className="component">
+            <h3 id="clickonavailable">
+                Click on an available date to make a booking
+            </h3>
             <div className="weeks">
                 <div className="week">
                     {currentWeek && Object.keys(currentWeek).length > 0 ? (
@@ -186,6 +188,6 @@ export default function Bookings() {
                 </div>
             </div>
             <Route path="/bookings/createbooking" component={CreateBooking} />
-        </React.Fragment>
+        </div>
     );
 }

@@ -183,6 +183,9 @@ app.post("/api/makebooking", (req, res) => {
     let userId = req.session.id;
     db.makeBooking(req.body.week, req.body.year, userId, req.body.stand_id)
         .then(data => {
+            data.rows[0]["day"] = moment(
+                data.rows[0].iso_year + "-W" + data.rows[0].iso_week
+            ).isoWeekday(7);
             res.json(data.rows[0]);
         })
         .catch(err => {
@@ -194,11 +197,6 @@ app.get("/api/getmybookings", (req, res) => {
     let userId = req.session.id;
     db.getMyBookings(userId)
         .then(data => {
-            console.log(
-                moment(data.rows[2].iso_year + "-W" + data.rows[0].iso_week)
-                    .isoWeekday(7)
-                    .format("LL")
-            );
             for (let prop in data.rows) {
                 // console.log(prop);
                 data.rows[prop]["day"] = moment(

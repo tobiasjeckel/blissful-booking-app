@@ -14,10 +14,6 @@ export default function CreateBooking(props) {
         return state[selectedWeek];
     });
 
-    // const bookingConfirmation = useSelector(state => {
-    //     return state.bookingConfirmation;
-    // });
-
     const modal = useSelector(state => {
         return state.showModal;
     });
@@ -81,8 +77,9 @@ export default function CreateBooking(props) {
             <div className="stands">
                 <div>
                     <h4>Small Stand</h4>
-                    <img className="booth_icon" src="/assets/booth_icon.svg" />
+                    <img className="booth_icon" src="/assets/booth_icon.png" />
                     <p> ⟵ 3m ⟶ </p>
+                    <p> 59.95 € </p>
                     {smallStands && smallStands.length > 0 ? (
                         <button
                             className="selectstandsbutton"
@@ -97,8 +94,12 @@ export default function CreateBooking(props) {
                 </div>
                 <div>
                     <h4>Large Stand</h4>
-                    <img className="booth_icon" src="/assets/booth_icon.svg" />
+                    <img
+                        className="booth_icon"
+                        src="/assets/booth_icon_large.png"
+                    />
                     <p> ⟵ 6m ⟶ </p>
+                    <p> 99.95 € </p>
                     {largeStands && largeStands.length > 0 ? (
                         <button
                             className="selectstandsbutton"
@@ -119,16 +120,48 @@ export default function CreateBooking(props) {
                             <h1 id="close" onClick={handleCloseModal}>
                                 X
                             </h1>
-                            <p>
-                                Click here to make a definititive booking after
-                                having read the terms and conditions. You will
-                                be redirected to Payment.{" "}
+                            <p className="disclaimer">
+                                You are making a definitive booking on{" "}
+                                <b className="highlightcolor">
+                                    {selectedStandStype == "small"
+                                        ? new Date(
+                                              nextAvailableSmallStand.day
+                                          ).toLocaleDateString("en-En", {
+                                              weekday: "long",
+                                              year: "numeric",
+                                              month: "long",
+                                              day: "numeric"
+                                          })
+                                        : new Date(
+                                              nextAvailableLargeStand.day
+                                          ).toLocaleDateString("en-En", {
+                                              weekday: "long",
+                                              year: "numeric",
+                                              month: "long",
+                                              day: "numeric"
+                                          })}
+                                </b>{" "}
+                                for a{" "}
+                                <b className="highlightcolor">
+                                    {selectedStandStype}
+                                </b>{" "}
+                                stand.
                             </p>
+                            <p className="disclaimer">
+                                Please read and accept the{" "}
+                                <u>terms and conditions</u>. You will be
+                                redirected to Payment.{" "}
+                            </p>
+                            <span>
+                                <input type="checkbox" /> I agree to the terms,
+                                conditions and privacy policy.
+                            </span>
                             <button
+                                id="completebooking"
                                 onClick={handleClickMakeBooking}
                                 value={selectedStandStype}
                             >
-                                Submit
+                                🔒 Complete Booking
                             </button>
                         </div>
                     </div>
