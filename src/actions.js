@@ -121,3 +121,19 @@ export function getMyBookings() {
         };
     });
 }
+
+export function showModal(stand_type) {
+    return {
+        type: "SHOW_MODAL",
+        showModal: true,
+        stand_type: stand_type
+    };
+}
+
+export function closeModal() {
+    return {
+        type: "CLOSE_MODAL",
+        showModal: false,
+        stand_type: ""
+    };
+}

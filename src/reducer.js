@@ -84,5 +84,21 @@ export default function reducer(state = {}, action) {
         };
     }
 
+    if (action.type === "SHOW_MODAL") {
+        state = {
+            ...state,
+            showModal: action.showModal,
+            stand_type: action.stand_type
+        };
+    }
+
+    if (action.type === "CLOSE_MODAL") {
+        state = {
+            ...state,
+            showModal: action.showModal,
+            stand_type: action.stand_type
+        };
+    }
+
     return state;
 }
