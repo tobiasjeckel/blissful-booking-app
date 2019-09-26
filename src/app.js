@@ -6,9 +6,17 @@ import CreateBooking from "./createbooking";
 import Confirmation from "./confirmation";
 import Admin from "./adminpanel";
 import MyBookings from "./mybookings";
+import { getUserData } from "./actions";
 
 export default function App() {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch(getUserData);
+    const userData = useSelector(state => {
+        return state.userData;
+    });
+
+    useEffect(() => {
+        dispatch(getUserData());
+    }, []);
 
     return (
         <BrowserRouter>
@@ -22,9 +30,11 @@ export default function App() {
                         <Link className="navlink" to={"/mybookings"}>
                             View my bookings
                         </Link>
-                        <Link className="navlink" to={"/adminpanel"}>
-                            Admin Panel
-                        </Link>
+                        {userData && userData.id == 1 && (
+                            <Link className="navlink" to={"/adminpanel"}>
+                                Admin Panel
+                            </Link>
+                        )}
                         <a className="navlink" href="/logout">
                             Log out
                         </a>

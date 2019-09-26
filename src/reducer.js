@@ -100,5 +100,12 @@ export default function reducer(state = {}, action) {
         };
     }
 
+    if (action.type === "GET_USER_DATA") {
+        state = {
+            ...state,
+            userData: action.userData
+        };
+    }
+
     return state;
 }

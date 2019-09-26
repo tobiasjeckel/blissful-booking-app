@@ -25,27 +25,14 @@ exports.getHash = function(email) {
     ]);
 };
 
-exports.editUser = function(first, last, email, id) {
+exports.getUserData = function(user_id) {
     return db.query(
         `
-        UPDATE users
-        SET first = $1, last = $2, email = $3
-        WHERE id = $4
-        RETURNING first
+        SELECT first, last, id
+        FROM users
+        WHERE id = $1
         `,
-        [first, last, email, id]
-    );
-};
-
-exports.editUserAndPass = function(first, last, email, id, hash) {
-    return db.query(
-        `
-        UPDATE users
-        SET first = $1, last = $2, email = $3, password = $5
-        WHERE id = $4
-        RETURNING first
-        `,
-        [first, last, email, id, hash]
+        [user_id]
     );
 };
 

@@ -137,3 +137,12 @@ export function closeModal() {
         stand_type: ""
     };
 }
+
+export function getUserData() {
+    return axios.get("api/getuserdata").then(({ data }) => {
+        return {
+            type: "GET_USER_DATA",
+            userData: data
+        };
+    });
+}

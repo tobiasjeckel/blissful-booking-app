@@ -110,6 +110,14 @@ app.get("/welcome", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
 
+app.get("/api/getuserdata", (req, res) => {
+    db.getUserData(req.session.id)
+        .then(data => res.json(data.rows[0]))
+        .catch(err => {
+            console.log("err when getting user data: ", err);
+        });
+});
+
 app.get("/api/getanyweek/:adder", (req, res) => {
     let adder = req.params.adder;
     let week = moment()
