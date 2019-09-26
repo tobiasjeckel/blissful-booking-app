@@ -36,6 +36,10 @@ body {
     text-align: center;
 }
 
+#delete-booking {
+    width: 200px;
+}
+
 a,
 a:visited {
     text-decoration: none;
@@ -124,6 +128,22 @@ a:visited {
 
 .already {
     font-size: 20px;
+}
+
+#csvlink {
+    display: inline-block;
+}
+
+#csvlink:hover {
+    font-weight: 700;
+}
+
+#csv-icon {
+    width: 3vw;
+}
+
+#csvtext {
+    margin-right: 1vw;
 }
 
 input[type="text"],

@@ -27,12 +27,9 @@ export default function AdminBooker() {
     return (
         <React.Fragment>
             <div className="adminBooker">
-                <p>
-                    Enter here to make an admin booking. WILL OVERRIDE EXISTING
-                    BOOKINGS!{" "}
-                </p>
+                <p>Disable availability of a stand.</p>
                 <form>
-                    <label htmlFor="stand">Choose a stand:</label>
+                    <label htmlFor="stand">Choose a stand: </label>
                     <input
                         type="number"
                         name="stand"

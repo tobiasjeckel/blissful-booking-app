@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBookingsAdmin, setAdminWeek, deleteBooking } from "./actions";
 import { Link } from "react-router-dom";
 import AdminBooker from "./adminbooker";
+import { CSVLink } from "react-csv";
 
 export default function AdminPanel() {
     const dispatch = useDispatch();
@@ -18,6 +19,9 @@ export default function AdminPanel() {
     const bookingsAdmin = useSelector(state => {
         return state.bookingsAdmin;
     });
+
+    const csvData = bookingsAdmin && Object.values(bookingsAdmin);
+    console.log(csvData);
 
     const adminBookingId = useSelector(state => {
         return state.adminBookingId;
@@ -37,6 +41,7 @@ export default function AdminPanel() {
         e.preventDefault();
         dispatch(deleteBooking(e.target.value));
     };
+
     return (
         <div className="component">
             <div>
@@ -64,55 +69,77 @@ export default function AdminPanel() {
                 <br />
                 <div className="bookingsOverview">
                     {bookingsAdmin && Object.keys(bookingsAdmin).length > 0 ? (
-                        <h3>
-                            Bookings for Week{" "}
-                            {
-                                bookingsAdmin[Object.keys(bookingsAdmin)[0]]
-                                    .iso_week
-                            }
-                            ,{" "}
-                            {
-                                bookingsAdmin[Object.keys(bookingsAdmin)[0]]
-                                    .iso_year
-                            }
-                        </h3>
+                        <div>
+                            <h3>
+                                Bookings for Week{" "}
+                                {
+                                    bookingsAdmin[Object.keys(bookingsAdmin)[0]]
+                                        .iso_week
+                                }
+                                ,{" "}
+                                {
+                                    bookingsAdmin[Object.keys(bookingsAdmin)[0]]
+                                        .iso_year
+                                }
+                            </h3>
+                            <CSVLink data={csvData}>
+                                <p id="csvlink">
+                                    <span id="csvtext">
+                                        Export to .csv File
+                                    </span>
+                                    <img
+                                        id="csv-icon"
+                                        src="/assets/csv-icon.jpg"
+                                    />
+                                </p>
+                            </CSVLink>
+                            <table>
+                                <colgroup span="7"></colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th>Booking ID</th>
+                                        <th>User ID</th>
+                                        <th>Stand ID</th>
+                                        <th>Stand Type</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Delete Booking</th>
+                                    </tr>
+                                    {bookingsAdmin &&
+                                        Object.keys(bookingsAdmin).length > 0 &&
+                                        bookingsAdmin.map(booking => {
+                                            return (
+                                                <tr key={booking.booking_id}>
+                                                    <td>
+                                                        {booking.booking_id}
+                                                    </td>
+                                                    <td>{booking.user_id}</td>
+                                                    <td>{booking.stand_id}</td>
+                                                    <td>{booking.type}</td>
+                                                    <td>{booking.first}</td>
+                                                    <td>{booking.last}</td>
+                                                    <td>
+                                                        <button
+                                                            id="delete-booking"
+                                                            value={
+                                                                booking.booking_id
+                                                            }
+                                                            onClick={
+                                                                handleDelete
+                                                            }
+                                                        >
+                                                            Delete Booking
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        })}
+                                </tbody>
+                            </table>
+                        </div>
                     ) : (
                         <p>No bookings found</p>
                     )}
-                    <table>
-                        <colgroup span="7"></colgroup>
-                        <tr>
-                            <th>Booking ID</th>
-                            <th>User ID</th>
-                            <th>Stand ID</th>
-                            <th>Stand Type</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Delete Booking</th>
-                        </tr>
-                        {bookingsAdmin &&
-                            Object.keys(bookingsAdmin).length > 0 &&
-                            bookingsAdmin.map(booking => {
-                                return (
-                                    <tr key={booking.booking_id}>
-                                        <td>{booking.booking_id}</td>
-                                        <td>{booking.user_id}</td>
-                                        <td>{booking.stand_id}</td>
-                                        <td>{booking.type}</td>
-                                        <td>{booking.first}</td>
-                                        <td>{booking.last}</td>
-                                        <td>
-                                            <button
-                                                value={booking.booking_id}
-                                                onClick={handleDelete}
-                                            >
-                                                Delete Booking
-                                            </button>
-                                        </td>
-                                    </tr>
-                                );
-                            })}
-                    </table>
                 </div>
 
                 <AdminBooker />
