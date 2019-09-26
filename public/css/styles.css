@@ -232,8 +232,12 @@ input[type="submit"]:active {
     width: 200px;
 }
 
-/* calendar styling */
+.weeks {
+    display: flex;
+    justify-content: space-evenly;
+}
 
+/* calendar styling */
 time.icon {
     font-size: 1em; /* change icon size */
     display: block;
@@ -326,3 +330,4 @@ time.icon:focus {
         transform: rotate(0deg) skewY(0deg);
     }
 }
+/* calendar styling end*/

@@ -14,7 +14,7 @@ export default function App() {
         <BrowserRouter>
             <React.Fragment>
                 <div className="header">
-                    <h2>Mauerpark Booking Tool</h2>
+                    <h2>Flea Market Booking App</h2>
                     <div className="navbar">
                         <Link className="navlink" to={"/bookings"}>
                             Make a booking

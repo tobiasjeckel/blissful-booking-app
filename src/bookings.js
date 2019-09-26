@@ -39,13 +39,16 @@ export default function Bookings() {
 
     return (
         <React.Fragment>
-            <div className="week">
-                {currentWeek && Object.keys(currentWeek).length > 0 ? (
-                    <Link
-                        to={"/bookings/createbooking/"}
-                        onClick={() => onClickSetSelectedWeek("currentWeek")}
-                    >
-                        <div className="week">
+            <h3>Click on an available date to make a booking</h3>
+            <div className="weeks">
+                <div className="week">
+                    {currentWeek && Object.keys(currentWeek).length > 0 ? (
+                        <Link
+                            to={"/bookings/createbooking/"}
+                            onClick={() =>
+                                onClickSetSelectedWeek("currentWeek")
+                            }
+                        >
                             <time dateTime="" className="icon">
                                 <em>Sunday</em>
                                 <strong>
@@ -65,99 +68,123 @@ export default function Bookings() {
                                     ).getDate()}
                                 </span>
                             </time>
-                        </div>
-                    </Link>
-                ) : (
-                    <p>Sorry, no more stands are available for this week</p>
-                )}
-            </div>
-
-            <div className="week">
-                {currentWeek && Object.keys(currentWeek).length > 0 ? (
-                    <Link
-                        to={"/bookings/createbooking/"}
-                        onClick={() => onClickSetSelectedWeek("currentWeek")}
-                    >
+                        </Link>
+                    ) : (
                         <p>
-                            Click here to make a booking for this week{" "}
-                            {currentWeek[Object.keys(currentWeek)[0]].iso_week}
-                            {", "}
-                            {currentWeek[Object.keys(currentWeek)[0]].day}
+                            Sorry, no more stands are available for the upcoming
+                            week. Please select another date.
                         </p>
-                    </Link>
-                ) : (
-                    <p>Sorry, no more stands are available for this week</p>
-                )}
-            </div>
-            <div className="week">
-                {currentPlusOne && Object.keys(currentPlusOne).length > 0 ? (
-                    <Link
-                        to={"/bookings/createbooking"}
-                        onClick={() => onClickSetSelectedWeek("currentPlusOne")}
-                    >
+                    )}
+                </div>
+                <div className="week">
+                    {currentPlusOne &&
+                    Object.keys(currentPlusOne).length > 0 ? (
+                        <Link
+                            to={"/bookings/createbooking/"}
+                            onClick={() =>
+                                onClickSetSelectedWeek("currentPlusOne")
+                            }
+                        >
+                            <time dateTime="" className="icon">
+                                <em>Sunday</em>
+                                <strong>
+                                    {new Date(
+                                        currentPlusOne[
+                                            Object.keys(currentPlusOne)[0]
+                                        ].day
+                                    ).toLocaleDateString("en-US", {
+                                        month: "long"
+                                    })}
+                                </strong>
+                                <span>
+                                    {new Date(
+                                        currentPlusOne[
+                                            Object.keys(currentPlusOne)[0]
+                                        ].day
+                                    ).getDate()}
+                                </span>
+                            </time>
+                        </Link>
+                    ) : (
                         <p>
-                            Click here to make a booking for next week{" "}
-                            {
-                                currentPlusOne[Object.keys(currentPlusOne)[0]]
-                                    .iso_week
-                            }
-                            {", "}
-                            {currentPlusOne[Object.keys(currentPlusOne)[0]].day}
+                            Sorry, no more stands are available for this week.
+                            Please select another date.
                         </p>
-                    </Link>
-                ) : (
-                    <p>Sorry, no more stands are available for this week</p>
-                )}
-            </div>
-            <div className="week">
-                {currentPlusTwo && Object.keys(currentPlusTwo).length > 0 ? (
-                    <Link
-                        to={"/bookings/createbooking"}
-                        onClick={() => onClickSetSelectedWeek("currentPlusTwo")}
-                    >
+                    )}
+                </div>
+                <div className="week">
+                    {currentPlusTwo &&
+                    Object.keys(currentPlusTwo).length > 0 ? (
+                        <Link
+                            to={"/bookings/createbooking"}
+                            onClick={() =>
+                                onClickSetSelectedWeek("currentPlusTwo")
+                            }
+                        >
+                            <time dateTime="" className="icon">
+                                <em>Sunday</em>
+                                <strong>
+                                    {new Date(
+                                        currentPlusTwo[
+                                            Object.keys(currentPlusTwo)[0]
+                                        ].day
+                                    ).toLocaleDateString("en-US", {
+                                        month: "long"
+                                    })}
+                                </strong>
+                                <span>
+                                    {new Date(
+                                        currentPlusTwo[
+                                            Object.keys(currentPlusTwo)[0]
+                                        ].day
+                                    ).getDate()}
+                                </span>
+                            </time>
+                        </Link>
+                    ) : (
                         <p>
-                            Click here to make a booking for week{" "}
-                            {
-                                currentPlusTwo[Object.keys(currentPlusTwo)[0]]
-                                    .iso_week
-                            }
-                            {", "}
-                            {currentPlusTwo[Object.keys(currentPlusTwo)[0]].day}
+                            Sorry, no more stands are available for this week.
+                            Please select another date.
                         </p>
-                    </Link>
-                ) : (
-                    <p>Sorry, no more stands are available for this week</p>
-                )}
-            </div>
-            <div className="week">
-                {currentPlusThree &&
-                Object.keys(currentPlusThree).length > 0 ? (
-                    <Link
-                        to={"/bookings/createbooking"}
-                        onClick={() =>
-                            onClickSetSelectedWeek("currentPlusThree")
-                        }
-                    >
+                    )}
+                </div>
+                <div className="week">
+                    {currentPlusThree &&
+                    Object.keys(currentPlusThree).length > 0 ? (
+                        <Link
+                            to={"/bookings/createbooking"}
+                            onClick={() =>
+                                onClickSetSelectedWeek("currentPlusThree")
+                            }
+                        >
+                            <time dateTime="" className="icon">
+                                <em>Sunday</em>
+                                <strong>
+                                    {new Date(
+                                        currentPlusThree[
+                                            Object.keys(currentPlusThree)[0]
+                                        ].day
+                                    ).toLocaleDateString("en-US", {
+                                        month: "long"
+                                    })}
+                                </strong>
+                                <span>
+                                    {new Date(
+                                        currentPlusThree[
+                                            Object.keys(currentPlusThree)[0]
+                                        ].day
+                                    ).getDate()}
+                                </span>
+                            </time>
+                        </Link>
+                    ) : (
                         <p>
-                            Click here to make a booking for week{" "}
-                            {
-                                currentPlusThree[
-                                    Object.keys(currentPlusThree)[0]
-                                ].iso_week
-                            }
-                            {", "}
-                            {
-                                currentPlusThree[
-                                    Object.keys(currentPlusThree)[0]
-                                ].day
-                            }
+                            Sorry, no more stands are available this week.
+                            Please select another date.
                         </p>
-                    </Link>
-                ) : (
-                    <p>Sorry, no more stands are available this week</p>
-                )}
+                    )}
+                </div>
             </div>
-
             <Route path="/bookings/createbooking" component={CreateBooking} />
         </React.Fragment>
     );
