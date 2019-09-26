@@ -34,6 +34,12 @@ export default function Bookings() {
     });
 
     const onClickSetSelectedWeek = (iso_week, iso_year) => {
+        setTimeout(function() {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: "smooth"
+            });
+        }, 50);
         dispatch(setSelectedWeek(iso_week, iso_year));
     };
 

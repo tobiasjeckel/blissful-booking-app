@@ -29,15 +29,14 @@ body {
 }
 
 .createBooking {
-    background-color: lightgrey;
     border-top: 1px black solid;
-    border-bottom: 1px black solid;
     margin-top: 20px;
     text-align: center;
 }
 
 #delete-booking {
     width: 200px;
+    margin: 0;
 }
 
 a,
@@ -128,6 +127,10 @@ a:visited {
 
 .already {
     font-size: 20px;
+}
+
+#termspointer {
+    cursor: pointer;
 }
 
 #csvlink {
@@ -250,6 +253,10 @@ input[type="submit"]:active {
     margin: 0;
 }
 
+.overlaytextupper {
+    margin-top: 150px;
+}
+
 .booth_icon {
     height: 200px;
     /* width: 200px; */
@@ -269,7 +276,7 @@ input[type="submit"]:active {
 }
 
 .disclaimer {
-    margin: 50px;
+    margin: 30px;
 }
 
 .highlightcolor {
@@ -294,6 +301,11 @@ th,
 td {
     border: 1px solid black;
     font-size: 1.5vw;
+}
+
+th,
+td {
+    padding: 1vw;
 }
 
 /* calendar styling */

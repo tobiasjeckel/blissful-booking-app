@@ -82,7 +82,10 @@ export default function AdminPanel() {
                                         .iso_year
                                 }
                             </h3>
-                            <CSVLink data={csvData}>
+                            <CSVLink
+                                data={csvData}
+                                filename={"my-bookings.csv"}
+                            >
                                 <p id="csvlink">
                                     <span id="csvtext">
                                         Export to .csv File

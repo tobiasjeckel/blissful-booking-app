@@ -120,7 +120,7 @@ export default function CreateBooking(props) {
                             <h1 id="close" onClick={handleCloseModal}>
                                 X
                             </h1>
-                            <p className="disclaimer">
+                            <p className="overlaytextupper">
                                 You are making a definitive booking on{" "}
                                 <b className="highlightcolor">
                                     {selectedStandStype == "small"
@@ -149,8 +149,7 @@ export default function CreateBooking(props) {
                             </p>
                             <p className="disclaimer">
                                 Please read and accept the{" "}
-                                <u>terms and conditions</u>. You will be
-                                redirected to Payment.{" "}
+                                <u id="termspointer">terms and conditions</u>.
                             </p>
                             <span>
                                 <input type="checkbox" /> I agree to the terms,
