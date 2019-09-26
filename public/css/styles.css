@@ -9,7 +9,6 @@ body {
 }
 
 .bookingsOverview {
-    background-color: lightgrey;
     border-top: 1px black solid;
     border-bottom: 1px black solid;
 }
@@ -264,6 +263,17 @@ input[type="submit"]:active {
 
 .component {
     padding: 10px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    font-size: 1.5vw;
 }
 
 /* calendar styling */

@@ -65,7 +65,7 @@ export default function AdminPanel() {
                 <div className="bookingsOverview">
                     {bookingsAdmin && Object.keys(bookingsAdmin).length > 0 ? (
                         <h3>
-                            Bookings for week{" "}
+                            Bookings for Week{" "}
                             {
                                 bookingsAdmin[Object.keys(bookingsAdmin)[0]]
                                     .iso_week
@@ -79,28 +79,40 @@ export default function AdminPanel() {
                     ) : (
                         <p>No bookings found</p>
                     )}
-                    <ul>
+                    <table>
+                        <colgroup span="7"></colgroup>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>User ID</th>
+                            <th>Stand ID</th>
+                            <th>Stand Type</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Delete Booking</th>
+                        </tr>
                         {bookingsAdmin &&
                             Object.keys(bookingsAdmin).length > 0 &&
                             bookingsAdmin.map(booking => {
                                 return (
-                                    <li key={booking.booking_id}>
-                                        Booking ID: {booking.booking_id} | User:{" "}
-                                        {booking.user_id} | Stand:{" "}
-                                        {booking.stand_id} | Type:{" "}
-                                        {booking.type} | First Name:{" "}
-                                        {booking.first} | Last Name:{" "}
-                                        {booking.last} |
-                                        <button
-                                            value={booking.booking_id}
-                                            onClick={handleDelete}
-                                        >
-                                            Delete Booking
-                                        </button>
-                                    </li>
+                                    <tr key={booking.booking_id}>
+                                        <td>{booking.booking_id}</td>
+                                        <td>{booking.user_id}</td>
+                                        <td>{booking.stand_id}</td>
+                                        <td>{booking.type}</td>
+                                        <td>{booking.first}</td>
+                                        <td>{booking.last}</td>
+                                        <td>
+                                            <button
+                                                value={booking.booking_id}
+                                                onClick={handleDelete}
+                                            >
+                                                Delete Booking
+                                            </button>
+                                        </td>
+                                    </tr>
                                 );
                             })}
-                    </ul>
+                    </table>
                 </div>
 
                 <AdminBooker />
