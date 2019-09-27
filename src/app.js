@@ -28,20 +28,28 @@ export default function App() {
                 <div className="header">
                     <h2>Flea Market Booking App</h2>
                     <div className="navbar">
-                        <Link className="navlink" to={"/bookings"}>
-                            Make a booking
-                        </Link>
-                        <Link className="navlink" to={"/mybookings"}>
-                            View my bookings
-                        </Link>
-                        {userData && userData.id == 1 && (
-                            <Link className="navlink" to={"/adminpanel"}>
-                                Admin Panel
+                        <div>
+                            <Link className="navlink" to={"/bookings"}>
+                                Make a booking
                             </Link>
-                        )}
-                        <a className="navlink" href="/logout">
-                            Log out
-                        </a>
+                        </div>
+                        <div>
+                            <Link className="navlink" to={"/mybookings"}>
+                                View my bookings
+                            </Link>
+                        </div>
+                        <div>
+                            {userData && userData.id == 1 && (
+                                <Link className="navlink" to={"/adminpanel"}>
+                                    Admin Panel
+                                </Link>
+                            )}
+                        </div>
+                        <div>
+                            <a className="navlink" href="/logout">
+                                Log out
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <Route exact path="/" component={Bookings} />

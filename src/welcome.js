@@ -17,8 +17,8 @@ export default class Welcome extends React.Component {
                         <div className="splashcontent">
                             <div className="splashheader">
                                 <h1>
-                                    Book your stand at Berlins hippest Flea
-                                    Markets
+                                    Book your stand at Berlin&apos;s hippest
+                                    Flea Markets
                                 </h1>
                             </div>
                         </div>
