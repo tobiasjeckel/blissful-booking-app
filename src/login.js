@@ -52,7 +52,7 @@ export default class Login extends React.Component {
                 {this.state.error && (
                     <p>Ooops, something went wrong. Please try again!</p>
                 )}
-                <form>
+                <form className="reglogform">
                     <input
                         type="email"
                         name="email"

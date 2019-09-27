@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBookingsAdmin, setAdminWeek, deleteBooking } from "./actions";
-import { Link } from "react-router-dom";
 import AdminBooker from "./adminbooker";
 import { CSVLink } from "react-csv";
 
@@ -13,7 +12,6 @@ export default function AdminPanel() {
     });
     const getBookings = e => {
         e.preventDefault();
-        // console.log("submit button clicked", inputWeek);
         dispatch(getBookingsAdmin(selectedWeek));
     };
     const bookingsAdmin = useSelector(state => {
@@ -21,7 +19,6 @@ export default function AdminPanel() {
     });
 
     const csvData = bookingsAdmin && Object.values(bookingsAdmin);
-    console.log(csvData);
 
     const adminBookingId = useSelector(state => {
         return state.adminBookingId;
@@ -32,7 +29,6 @@ export default function AdminPanel() {
     }, [adminBookingId]);
 
     const handleInputChange = e => {
-        console.log(e.target.value);
         e.preventDefault();
         dispatch(setAdminWeek(e.target.value));
     };

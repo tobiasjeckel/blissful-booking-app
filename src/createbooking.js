@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { makeBooking, showModal, closeModal } from "./actions";
-import { Link } from "react-router-dom";
 
 export default function CreateBooking(props) {
     const dispatch = useDispatch();
@@ -31,8 +30,6 @@ export default function CreateBooking(props) {
     const largeStands = standArray.filter(stand => stand.type == "large");
     const nextAvailableSmallStand = smallStands[0];
     const nextAvailableLargeStand = largeStands[0];
-    // console.log(nextAvailableSmallStand);
-    // console.log(nextAvailableLargeStand);
 
     const handleShowModal = e => {
         dispatch(showModal(e.target.value));

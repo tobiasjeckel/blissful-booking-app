@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { makeAdminBooking, setAdminStand } from "./actions";
-import { Link } from "react-router-dom";
 
 export default function AdminBooker() {
     const dispatch = useDispatch();
     const handleInputChange = e => {
-        console.log("dispatching date");
         dispatch(setAdminStand(e.target.value));
     };
     const selectedAdminStand = useSelector(state => {
@@ -22,7 +20,6 @@ export default function AdminBooker() {
         selectedAdminStand &&
             selectedWeek &&
             dispatch(makeAdminBooking(selectedAdminStand, selectedWeek));
-        console.log(selectedAdminStand, selectedWeek);
     };
     return (
         <React.Fragment>

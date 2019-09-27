@@ -50,7 +50,7 @@ export default class Registration extends React.Component {
                 {this.state.error && (
                     <h2>Ooops, something went wrong. Please try again!</h2>
                 )}
-                <form>
+                <form className="reglogform">
                     <input
                         type="text"
                         name="first"

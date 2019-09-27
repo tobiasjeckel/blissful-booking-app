@@ -78,10 +78,9 @@ export default function Bookings() {
                             </time>
                         </Link>
                     ) : (
-                        <p>
-                            Sorry, no more stands are available for the upcoming
-                            week. Please select another date.
-                        </p>
+                        <div className="bookedout">
+                            Sorry, booked out. Please select another date.
+                        </div>
                     )}
                 </div>
                 <div className="week">
@@ -114,10 +113,9 @@ export default function Bookings() {
                             </time>
                         </Link>
                     ) : (
-                        <p>
-                            Sorry, no more stands are available for this week.
-                            Please select another date.
-                        </p>
+                        <div className="bookedout">
+                            Sorry, booked out. Please select another date.
+                        </div>
                     )}
                 </div>
                 <div className="week">
@@ -150,10 +148,9 @@ export default function Bookings() {
                             </time>
                         </Link>
                     ) : (
-                        <p>
-                            Sorry, no more stands are available for this week.
-                            Please select another date.
-                        </p>
+                        <div className="bookedout">
+                            Sorry, booked out. Please select another date.
+                        </div>
                     )}
                 </div>
                 <div className="week">
@@ -186,10 +183,9 @@ export default function Bookings() {
                             </time>
                         </Link>
                     ) : (
-                        <p>
-                            Sorry, no more stands are available this week.
-                            Please select another date.
-                        </p>
+                        <div className="bookedout">
+                            Sorry, booked out. Please select another date.
+                        </div>
                     )}
                 </div>
             </div>

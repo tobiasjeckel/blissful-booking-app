@@ -37,6 +37,7 @@ body {
 #delete-booking {
     width: 200px;
     margin: 0;
+    background-color: #d11a2a;
 }
 
 a,
@@ -120,6 +121,12 @@ a:visited {
 }
 
 .reglog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reglogform {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -306,6 +313,37 @@ td {
 th,
 td {
     padding: 1vw;
+}
+
+.bookedout {
+    width: 7em;
+    height: 7em;
+    background-color: #fd9f1b;
+    color: white;
+    border-radius: 0.6em;
+    box-shadow: 0 1px 0 #bdbdbd, 0 2px 0 #fff, 0 3px 0 #bdbdbd, 0 4px 0 #fff,
+        0 5px 0 #bdbdbd, 0 0 0 1px #bdbdbd;
+    margin: 2em auto;
+    padding: 0.4em 0.2em;
+    text-align: center;
+}
+
+.splashapp img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.splashappheader {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: hsla(0, 0%, 100%, 0.8);
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+    text-align: center;
 }
 
 /* calendar styling */
