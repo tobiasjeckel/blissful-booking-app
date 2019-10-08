@@ -36,7 +36,6 @@ This site was made with React, Redux, Node, PSQL etc.
 -   Export a calendar object on confirmation page
 -   Chat with customer support
 -   Payment route
--   Carousel with cool images on welcome page
 -   Improve mobile responsiveness
 
 ## Tech
