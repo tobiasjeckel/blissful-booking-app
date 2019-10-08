@@ -18,10 +18,6 @@ export default function App() {
         dispatch(getUserData());
     }, []);
 
-    // const myData = useSelector(state => {
-    //     return state.userData;
-    // });
-
     return (
         <BrowserRouter>
             <React.Fragment>
@@ -62,16 +58,3 @@ export default function App() {
         </BrowserRouter>
     );
 }
-
-// <div className="splashapp">
-//     <img src="/assets/app-splash.jpg" />
-//     <div className="splashappheader">
-//         <h1>
-//             Welcome{" "}
-//             <b className="highlightcolor">
-//                 {myData && myData.first}!{" "}
-//             </b>
-//             Click above to get started.
-//         </h1>
-//     </div>
-// </div>

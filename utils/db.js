@@ -5,10 +5,6 @@ const db = spicedPg(
         "postgres:postgres:postgres@localhost:5432/booking"
 );
 
-exports.testFunction = function() {
-    console.log("db is working");
-};
-
 exports.addUser = function(first, last, email, hash) {
     return db.query(
         `INSERT INTO users (first, last, email, password)
@@ -109,5 +105,3 @@ exports.getMyBookings = function(userId) {
         [userId]
     );
 };
-
-//make stand_id and user_id a primary id

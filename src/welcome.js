@@ -18,9 +18,12 @@ export default class Welcome extends React.Component {
                             <div className="splashheader">
                                 <h1>
                                     Book your stand at Berlin&apos;s hippest
-                                    Flea Markets
+                                    flea markets
                                 </h1>
                             </div>
+                        </div>
+                        <div className="author">
+                            <p>© visitBerlin.de, Picture: Dagmar Schwelle</p>
                         </div>
                     </div>
                     <div>

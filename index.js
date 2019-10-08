@@ -48,7 +48,6 @@ app.post("/registration", (req, res) => {
                 .then(data => {
                     req.session.id = data.rows[0].id;
                     req.session.first = data.rows[0].first;
-                    console.log("session id is: ", req.session.id);
                     res.json({
                         message: "Registration successful"
                     });
@@ -106,7 +105,6 @@ app.get("/logout", function(req, res) {
 });
 
 app.get("/welcome", (req, res) => {
-    // res.render();
     res.sendFile(__dirname + "/index.html");
 });
 
@@ -134,7 +132,6 @@ app.get("/api/getanyweek/:adder", (req, res) => {
     db.getFreeStands(week, year, day)
         .then(data => {
             for (let prop in data.rows) {
-                // console.log(prop);
                 data.rows[prop]["iso_week"] = week;
                 data.rows[prop]["iso_year"] = year;
                 data.rows[prop]["day"] = day;
@@ -153,7 +150,6 @@ app.get("/api/admin/getbookings/:inputweek", (req, res) => {
 
     db.getBookingsAdmin(iso_week, iso_year)
         .then(data => {
-            // console.log(data.rows);
             res.json(data.rows);
         })
         .catch(err => {
@@ -179,7 +175,6 @@ app.post("/api/deletebooking", (req, res) => {
     console.log(req.body.booking_id);
     db.deleteBooking(req.body.booking_id)
         .then(data => {
-            console.log("deleted booking: ", data.rows[0]);
             res.json(data.rows[0]);
         })
         .catch(err => {
@@ -206,7 +201,6 @@ app.get("/api/getmybookings", (req, res) => {
     db.getMyBookings(userId)
         .then(data => {
             for (let prop in data.rows) {
-                // console.log(prop);
                 data.rows[prop]["day"] = moment(
                     data.rows[prop].iso_year + "-W" + data.rows[prop].iso_week
                 )
@@ -229,5 +223,5 @@ app.get("*", (req, res) => {
 });
 
 app.listen(8080, () => {
-    console.log("I'm listeningggg.");
+    console.log("Booking app server is running");
 });

@@ -103,13 +103,30 @@ a:visited {
     left: 0;
     right: 0;
     align-items: center;
+    font-size: ;
 }
+
 .splashheader {
     display: flex;
     flex-direction: column;
     text-align: center;
     background-color: hsla(0, 0%, 100%, 0.8);
     margin-top: 20vh;
+}
+
+.author {
+    position: absolute;
+    font-size: 0.7vw;
+    right: 10px;
+    bottom: 10px;
+    text-align: right;
+    color: #fff;
+    text-shadow: 0 0 5px #333;
+    align-self: flex-end;
+}
+
+.splash {
+    position: relative;
 }
 
 .registration,

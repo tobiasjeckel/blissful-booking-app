@@ -40,7 +40,6 @@ export default function AdminBooker() {
                     <button onClick={makeBooking} name="submit">
                         Submit
                     </button>
-                    <p> {/*message - todo - preventDefault*/} </p>
                 </form>
             </div>
         </React.Fragment>
