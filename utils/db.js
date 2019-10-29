@@ -4,7 +4,6 @@ const db = spicedPg(
     process.env.DATABASE_URL ||
         "postgres:postgres:postgres@localhost:5432/booking"
 );
-
 exports.addUser = function(first, last, email, hash) {
     return db.query(
         `INSERT INTO users (first, last, email, password)

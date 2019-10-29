@@ -41,6 +41,8 @@ if (process.env.NODE_ENV != "production") {
     app.use("/bundle.js", (req, res) => res.sendFile(`${__dirname}/bundle.js`));
 }
 
+console.log(process.env);
+
 app.post("/registration", (req, res) => {
     bc.hash(req.body.password)
         .then(hash => {
