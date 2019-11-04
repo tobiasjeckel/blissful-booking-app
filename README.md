@@ -44,4 +44,4 @@ This site was made with React, Redux, Node, PSQL etc.
     -   Node, Express, PSQL, moment.js
 -   Frontend
     -   React, React-Router, Redux
--   Preventing security vulnerabilities like Cross-Site Request Forgery (CSRF)
+-   Preventing security vulnerabilities like Cross-Site Request Forgery (CSRF) and SQL-injection
